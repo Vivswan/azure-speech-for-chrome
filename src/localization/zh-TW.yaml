@@ -144,7 +144,7 @@ help:
       description: "在 Azure 中建立語音服務資源："
       step1: "登入 Azure 入口網站"
       step2: "點擊「建立資源」"
-      step3: "搜尋「Speech」並選擇「Speech Services」"
+      step3: "搜尋「Speech」並勾選僅 Azure 服務，然後選擇 Microsoft 的 Speech"
       step4: "點擊「建立」"
       step5: "選擇您的訂閱和資源群組"
       step6: "選擇區域（例如「East US」）"

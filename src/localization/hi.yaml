@@ -144,7 +144,7 @@ help:
       description: "Azure में Speech Services रिसोर्स बनाएं:"
       step1: "Azure पोर्टल में साइन इन करें"
       step2: "\"रिसोर्स बनाएं\" पर क्लिक करें"
-      step3: "\"Speech\" खोजें और \"Speech Services\" चुनें"
+      step3: "\"Speech\" खोजें और केवल Azure सेवाएं चेक करें और Microsoft द्वारा Speech चुनें"
       step4: "\"बनाएं\" पर क्लिक करें"
       step5: "अपनी सब्सक्रिप्शन और रिसोर्स ग्रुप चुनें"
       step6: "एक क्षेत्र चुनें (जैसे \"East US\")"

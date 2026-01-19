@@ -144,7 +144,7 @@ help:
       description: "Create a Speech Services resource in Azure:"
       step1: "Sign in to Azure Portal"
       step2: "Click \"Create a resource\""
-      step3: "Search for \"Speech\" and select \"Speech Services\""
+      step3: "Search for \"Speech\" and check Azure services only and select Speech by Microsoft"
       step4: "Click \"Create\""
       step5: "Choose your subscription and resource group"
       step6: "Select a region (e.g., \"East US\")"

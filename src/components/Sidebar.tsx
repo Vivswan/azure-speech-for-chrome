@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { Box, FileText, GitHub, HelpCircle, Settings, Sliders } from 'react-feather'
-import { twMerge } from 'tailwind-merge'
-import { useTranslation } from '../localization/translation'
+import React, {ReactNode} from 'react'
+import {useLocation, useNavigate} from 'react-router-dom'
+import {Box, FileText, GitHub, HelpCircle, Settings, Sliders} from 'react-feather'
+import {twMerge} from 'tailwind-merge'
+import {useTranslation} from '../localization/translation'
 
 interface SidebarItemProps {
   Icon: React.ComponentType<{ size?: number; className?: string }>;
@@ -17,14 +17,14 @@ export function Sidebar() {
 
   return (
     <div className="flex flex-col w-56 p-2 py-2.5 border-r">
-      <div className="flex items-center text-center mb-3 mx-1 ml-3">
+      <div className="flex items-center mb-3 mx-1 ml-3">
         <img
           src="images/icon_1000.png"
           className="mr-1.5 pt-0.5"
           style={{ width: '26px' }}
         />
         <div>
-          <div className="text-base font-bold text-neutral-800 bg-">
+          <div className="whitespace-nowrap text-sm font-bold text-neutral-800">
             {t('app.name')}
           </div>
           <div
@@ -98,7 +98,7 @@ Sidebar.Item = function Item({ Icon, children, to, color, onClick }: SidebarItem
       <div className={`p-1 rounded mr-1.5 text-white ${color}`}>
         <Icon size={14} className="group-hover:animate-wiggle" />
       </div>
-      <div>{children}</div>
+      <div className="text-sm">{children}</div>
     </button>
   )
 }
