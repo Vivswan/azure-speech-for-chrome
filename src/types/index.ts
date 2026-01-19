@@ -5,8 +5,7 @@ export interface SyncStorage {
   voices: Record<string, string>;
   readAloudEncoding: string;
   downloadEncoding: string;
-  accessKeyId: string;
-  secretAccessKey: string;
+  subscriptionKey: string;
   region: string;
   audioProfile: string;
   volumeGainDb: number;
@@ -22,10 +21,12 @@ export interface SessionStorage {
 
 export interface Voice {
   name: string;
-  ssmlGender: string;
-  languageCodes: string[];
-  naturalSampleRateHertz: number;
-  supportedEngines: string[];
+  shortName: string;
+  locale: string;
+  localName: string;
+  gender: string;
+  voiceType: string;
+  styleList?: string[];
 }
 
 export interface LanguageOption {
@@ -50,8 +51,7 @@ export interface SynthesizeParams {
   text: string;
   encoding: string;
   voice: string;
-  accessKeyId: string;
-  secretAccessKey: string;
+  subscriptionKey: string;
   region: string;
   speed: number;
   pitch: number;

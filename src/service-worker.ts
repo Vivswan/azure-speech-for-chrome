@@ -2,15 +2,7 @@ import './helpers/text-helpers'
 import { fileExtMap } from './helpers/file-helpers'
 import { sanitizeTextForSSML } from './helpers/text-helpers'
 import { SessionStorage, SyncStorage, SynthesizeParams, Voice } from './types'
-import {
-  DescribeVoicesCommand,
-  Engine,
-  OutputFormat,
-  PollyClient,
-  SynthesizeSpeechCommand,
-  TextType,
-  VoiceId
-} from '@aws-sdk/client-polly'
+import * as sdk from 'microsoft-cognitiveservices-speech-sdk'
 
 // Local state -----------------------------------------------------------------
 let queue: string[] = []
@@ -24,14 +16,14 @@ const AUDIO_CHUNK_SIZE = 8192
 
 const bootstrapped = new Promise<void>((resolve) => (bootstrappedResolver = resolve))
 
-// Bootstrap -------------------------------------------------------------------
-;(async function Bootstrap() {
+// Bootstrap function - called after handlers are defined
+async function bootstrap() {
   await migrateSyncStorage()
   await handlers.fetchVoices()
   await setDefaultSettings()
   await createContextMenus()
-  bootstrappedResolver()
-})()
+  bootstrappedResolver!()
+}
 
 // Event listeners -------------------------------------------------------------
 chrome.commands.onCommand.addListener(function(command) {
@@ -225,41 +217,44 @@ export const handlers: any = {
   synthesize: async function(params: SynthesizeParams): Promise<string> {
     console.log('Synthesizing text...', ...arguments)
 
-    const { text, encoding, voice, accessKeyId, secretAccessKey, region, speed, pitch, volumeGainDb, engine } = params
+    const { text, encoding, voice, subscriptionKey, region, speed, pitch, volumeGainDb } = params
 
-    if (!accessKeyId || !secretAccessKey || !region) {
+    if (!subscriptionKey || !region) {
       sendMessageToCurrentTab({
         id: 'setError',
         payload: {
           icon: 'error',
-          title: 'AWS credentials are missing',
-          message: 'Please enter valid AWS Access Key ID, Secret Access Key, and Region in the extension popup. Instructions: https://docs.aws.amazon.com/polly/latest/dg/setting-up.html'
+          title: 'Azure credentials are missing',
+          message: 'Please enter valid Azure Subscription Key and Region in the extension popup. Instructions: https://docs.microsoft.com/azure/cognitive-services/speech-service/'
         }
       })
 
-      throw new Error('AWS credentials are missing')
+      throw new Error('Azure credentials are missing')
     }
 
-    // Create Polly client
-    const pollyClient = new PollyClient({
-      region,
-      credentials: {
-        accessKeyId,
-        secretAccessKey
-      }
-    })
+    // Create Azure Speech Config
+    const speechConfig = sdk.SpeechConfig.fromSubscription(subscriptionKey, region)
+    speechConfig.speechSynthesisVoiceName = voice
 
-    let ssml
-    let textToSynthesize = text
-    if (text.isSSML()) {
-      ssml = text
-      textToSynthesize = undefined
+    // Map audio formats to Azure supported formats
+    const formatMap: { [key: string]: sdk.SpeechSynthesisOutputFormat } = {
+      'MP3': sdk.SpeechSynthesisOutputFormat.Audio16Khz32KBitRateMonoMp3,
+      'MP3_64_KBPS': sdk.SpeechSynthesisOutputFormat.Audio16Khz64KBitRateMonoMp3,
+      'OGG_OPUS': sdk.SpeechSynthesisOutputFormat.Ogg16Khz16BitMonoOpus
     }
 
-    // Apply prosody settings (pitch, speed, volume) to text/SSML
+    speechConfig.speechSynthesisOutputFormat = formatMap[encoding] || sdk.SpeechSynthesisOutputFormat.Audio16Khz64KBitRateMonoMp3
+
+    // Create synthesizer (no audio config for pull stream)
+    const synthesizer = new sdk.SpeechSynthesizer(speechConfig, null as unknown as sdk.AudioConfig)
+
+    // Build SSML with prosody settings
     const prosodyAttributes = []
     if (speed !== 1) {
-      prosodyAttributes.push(`rate="${Math.round(speed * 100)}%"`)
+      // Azure uses relative rate like "+50%" or "-25%"
+      const ratePercent = Math.round((speed - 1) * 100)
+      const rateSign = ratePercent >= 0 ? '+' : ''
+      prosodyAttributes.push(`rate="${rateSign}${ratePercent}%"`)
     }
     if (pitch !== 0) {
       const pitchSign = pitch >= 0 ? '+' : ''
@@ -270,51 +265,50 @@ export const handlers: any = {
       prosodyAttributes.push(`volume="${volumeSign}${volumeGainDb}dB"`)
     }
 
-    if (prosodyAttributes.length > 0) {
-      const prosodyTag = `<prosody ${prosodyAttributes.join(' ')}>`
-      if (ssml) {
-        // If already SSML, wrap the content inside speak tags
-        ssml = ssml.replace(/<speak[^>]*>(.*)<\/speak>/s, `<speak>${prosodyTag}$1</prosody></speak>`)
+    let ssml: string
+    const isSSML = text.isSSML()
+
+    if (isSSML) {
+      // If already SSML, wrap with prosody if needed
+      if (prosodyAttributes.length > 0) {
+        const prosodyTag = `<prosody ${prosodyAttributes.join(' ')}>`
+        ssml = text.replace(/<speak[^>]*>(.*)<\/speak>/s,
+          `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${voice}">${prosodyTag}$1</prosody></voice></speak>`)
       } else {
-        // Convert text to SSML with prosody
-        ssml = `<speak>${prosodyTag}${text}</prosody></speak>`
-        textToSynthesize = undefined
+        ssml = text.replace(/<speak[^>]*>(.*)<\/speak>/s,
+          `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${voice}">$1</voice></speak>`)
       }
-    }
-
-    // Map audio formats to Polly supported formats
-    const formatMap: { [key: string]: OutputFormat } = {
-      'MP3': OutputFormat.MP3,
-      'MP3_64_KBPS': OutputFormat.MP3,
-      'OGG_OPUS': OutputFormat.OGG_VORBIS
-    }
-
-    // Map engine strings to AWS SDK Engine enum
-    const engineMap: { [key: string]: Engine } = {
-      'standard': Engine.STANDARD,
-      'neural': Engine.NEURAL,
-      'generative': Engine.GENERATIVE,
-      'long-form': Engine.LONG_FORM
-    }
-
-    const pollyParams = {
-      OutputFormat: formatMap[encoding] || OutputFormat.MP3,
-      Text: ssml || textToSynthesize,
-      TextType: (ssml ? TextType.SSML : TextType.TEXT) as TextType,
-      VoiceId: voice as VoiceId,
-      Engine: engineMap[engine.toLowerCase()] || Engine.STANDARD
+    } else {
+      // Convert text to SSML
+      if (prosodyAttributes.length > 0) {
+        ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${voice}"><prosody ${prosodyAttributes.join(' ')}>${text}</prosody></voice></speak>`
+      } else {
+        ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><voice name="${voice}">${text}</voice></speak>`
+      }
     }
 
     try {
-      const command = new SynthesizeSpeechCommand(pollyParams)
-      const response = await pollyClient.send(command)
+      const result = await new Promise<sdk.SpeechSynthesisResult>((resolve, reject) => {
+        synthesizer.speakSsmlAsync(
+          ssml,
+          (result) => {
+            synthesizer.close()
+            if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
+              resolve(result)
+            } else {
+              reject(new Error(`Speech synthesis failed: ${result.errorDetails || sdk.ResultReason[result.reason]}`))
+            }
+          },
+          (error) => {
+            synthesizer.close()
+            reject(error)
+          }
+        )
+      })
 
-      if (!response.AudioStream) {
-        throw new Error('No audio stream received from Polly')
-      }
-
-      // Convert the audio stream to base64
-      const audioBytes = await response.AudioStream.transformToByteArray()
+      // Convert ArrayBuffer to base64
+      const audioData = result.audioData
+      const audioBytes = new Uint8Array(audioData)
       const binaryChunks: string[] = []
       for (let i = 0; i < audioBytes.length; i += AUDIO_CHUNK_SIZE) {
         const chunk = audioBytes.slice(i, i + AUDIO_CHUNK_SIZE)
@@ -322,7 +316,7 @@ export const handlers: any = {
       }
       return btoa(binaryChunks.join(''))
     } catch (error) {
-      console.error('Polly API error:', error)
+      console.error('Azure Speech API error:', error)
 
       sendMessageToCurrentTab({
         id: 'setError',
@@ -350,8 +344,7 @@ export const handlers: any = {
       text,
       encoding,
       voice,
-      accessKeyId: sync.accessKeyId,
-      secretAccessKey: sync.secretAccessKey,
+      subscriptionKey: sync.subscriptionKey,
       region: sync.region,
       speed: speed !== undefined ? speed : sync.speed,
       pitch: sync.pitch,
@@ -371,33 +364,36 @@ export const handlers: any = {
     try {
       const sync = await chrome.storage.sync.get() as SyncStorage
 
-      if (!sync.accessKeyId || !sync.secretAccessKey || !sync.region) {
-        console.warn('AWS credentials not configured')
+      if (!sync.subscriptionKey || !sync.region) {
+        console.warn('Azure credentials not configured')
         return false
       }
 
-      // Create Polly client
-      const pollyClient = new PollyClient({
-        region: sync.region,
-        credentials: {
-          accessKeyId: sync.accessKeyId,
-          secretAccessKey: sync.secretAccessKey
-        }
-      })
+      // Create Azure Speech Config
+      const speechConfig = sdk.SpeechConfig.fromSubscription(sync.subscriptionKey, sync.region)
+      const synthesizer = new sdk.SpeechSynthesizer(speechConfig, null as unknown as sdk.AudioConfig)
 
-      const command = new DescribeVoicesCommand({})
-      const response = await pollyClient.send(command)
+      // Use the Promise-based API for getVoicesAsync
+      const voicesResult = await synthesizer.getVoicesAsync()
+      synthesizer.close()
 
-      const voices = response.Voices || []
-      if (!voices.length) throw new Error('No voices found')
+      if (!voicesResult.voices || voicesResult.voices.length === 0) {
+        throw new Error(voicesResult.errorDetails || 'No voices found')
+      }
 
-      // Transform Polly voice format to match the expected structure
-      const transformedVoices: Voice[] = voices.map((voice) => ({
-        name: voice.Id || '',
-        ssmlGender: voice.Gender || 'NEUTRAL',
-        languageCodes: [voice.LanguageCode || ''],
-        naturalSampleRateHertz: 22050, // Default sample rate as SampleRate is not available in voice object
-        supportedEngines: voice.SupportedEngines || ['standard'] // Default to standard if not provided
+      const result = voicesResult.voices
+
+      // Transform Azure VoiceInfo to our Voice interface
+      const transformedVoices: Voice[] = result.map((voice) => ({
+        name: voice.name,
+        shortName: voice.shortName,
+        locale: voice.locale,
+        localName: voice.localName,
+        gender: voice.gender === sdk.SynthesisVoiceGender.Male ? 'Male' :
+                voice.gender === sdk.SynthesisVoiceGender.Female ? 'Female' : 'Neutral',
+        voiceType: voice.voiceType === sdk.SynthesisVoiceType.OnlineNeural ? 'neural' :
+                   voice.voiceType === sdk.SynthesisVoiceType.OnlineStandard ? 'standard' : 'neural',
+        styleList: voice.styleList || []
       }))
 
       await chrome.storage.session.set({ voices: transformedVoices })
@@ -410,6 +406,9 @@ export const handlers: any = {
     }
   }
 }
+
+// Initialize the extension
+bootstrap()
 
 // Helpers ---------------------------------------------------------------------
 async function updateContextMenus() {
@@ -556,15 +555,14 @@ export async function setDefaultSettings(): Promise<void> {
     language: sync.language || 'en-US',
     speed: sync.speed || 1,
     pitch: sync.pitch || 0,
-    voices: sync.voices || { 'en-US': 'Joanna' },
+    voices: sync.voices || { 'en-US': 'en-US-JennyNeural' },
     readAloudEncoding: sync.readAloudEncoding || 'OGG_OPUS',
     downloadEncoding: sync.downloadEncoding || 'MP3_64_KBPS',
-    accessKeyId: sync.accessKeyId || '',
-    secretAccessKey: sync.secretAccessKey || '',
-    region: sync.region || 'us-east-1',
+    subscriptionKey: sync.subscriptionKey || '',
+    region: sync.region || 'eastus',
     audioProfile: sync.audioProfile || 'default',
     volumeGainDb: sync.volumeGainDb || 0,
-    engine: sync.engine || 'standard'
+    engine: sync.engine || 'neural'
   })
 }
 
@@ -592,7 +590,8 @@ async function migrateSyncStorage(): Promise<void> {
   if (sync.locale) {
     const oldVoiceParts = sync.locale.split('-')
     newSync.language = [oldVoiceParts[0], oldVoiceParts[1]].join('-')
-    newSync.voices = { [newSync.language]: sync.locale }
+    // Map old voice to Azure neural voice
+    newSync.voices = { [newSync.language]: 'en-US-JennyNeural' }
   }
 
   if (sync.speed) {
@@ -603,12 +602,11 @@ async function migrateSyncStorage(): Promise<void> {
     newSync.pitch = 0
   }
 
-  // Migrate from Google Cloud API key to AWS credentials
+  // Migrate from Google Cloud API key to Azure credentials
   if (sync.apiKey) {
-    // Clear old API key since we're now using AWS
-    newSync.accessKeyId = ''
-    newSync.secretAccessKey = ''
-    newSync.region = 'us-east-1'
+    // Clear old API key since we're now using Azure
+    newSync.subscriptionKey = ''
+    newSync.region = 'eastus'
     newSync.credentialsValid = false
   }
 
@@ -625,7 +623,7 @@ async function setLanguages(): Promise<Set<string>> {
   }
 
   const languages = new Set(
-    session.voices?.map((voice: Voice) => voice.languageCodes).flat() || []
+    session.voices?.map((voice: Voice) => voice.locale) || []
   )
 
   await chrome.storage.session.set({ languages: Array.from(languages) })

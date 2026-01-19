@@ -346,7 +346,7 @@ function validateTranslations() {
  */
 function main() {
   try {
-    console.log('🌍 Translation Validator for Polly Chrome Extension\n')
+    console.log('🌍 Translation Validator for Azure Speech Chrome Extension\n')
 
     // Check if localization directory exists
     if (!fs.existsSync(LOCALIZATION_DIR)) {

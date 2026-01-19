@@ -1,5 +1,5 @@
 // Multilingual homepage functionality with internationalization
-console.log('Polly for Chrome multilingual homepage loaded')
+console.log('Azure Speech for Chrome multilingual homepage loaded')
 
 // Translation data
 interface Translations {
@@ -10,8 +10,8 @@ interface Translations {
 
 const translations: Translations = {
   en: {
-    title: 'Polly for Chrome - Premium Text-to-Speech Extension',
-    description: 'Convert any text on the web into high-quality, natural-sounding audio with Amazon Polly\'s advanced AI voices. 40+ languages, hundreds of voices.',
+    title: 'Azure Speech for Chrome - Premium Text-to-Speech Extension',
+    description: 'Convert any text on the web into high-quality, natural-sounding audio with Azure Speech Services\' advanced AI voices. 140+ languages, 400+ voices.',
     nav: {
       features: 'Features',
       screenshots: 'Screenshots',
@@ -19,7 +19,7 @@ const translations: Translations = {
     },
     hero: {
       title: 'Transform Text into Natural Speech',
-      description: 'Convert any text on the web into high-quality, natural-sounding audio with Amazon Polly\'s advanced AI voices. Choose from 40+ languages and hundreds of professional voices.',
+      description: 'Convert any text on the web into high-quality, natural-sounding audio with Azure Speech Services\' advanced AI voices. Choose from 140+ languages and 400+ professional voices.',
       cta: {
         primary: 'Add to Chrome - Free',
         secondary: 'Learn More'
@@ -29,8 +29,8 @@ const translations: Translations = {
       title: 'Powerful Features',
       subtitle: 'Everything you need for professional text-to-speech',
       voices: {
-        title: '40+ Languages & Hundreds of Voices',
-        description: 'Choose from Standard, Neural, Generative, and Long-form voice engines with natural-sounding AI voices'
+        title: '140+ Languages & 400+ Voices',
+        description: 'Choose from Neural voice engines with natural-sounding AI voices from Azure Speech Services'
       },
       speed: {
         title: 'Multiple Speed Options',
@@ -58,11 +58,11 @@ const translations: Translations = {
       subtitle: 'Get started in just a few simple steps',
       step1: {
         title: 'Install Extension',
-        description: 'Add Polly for Chrome to your browser from the Chrome Web Store'
+        description: 'Add Azure Speech for Chrome to your browser from the Chrome Web Store'
       },
       step2: {
-        title: 'Set Up AWS',
-        description: 'Configure your AWS credentials for Amazon Polly access (free tier available)'
+        title: 'Set Up Azure',
+        description: 'Configure your Azure Speech subscription key (free tier available)'
       },
       step3: {
         title: 'Start Listening',
@@ -76,7 +76,7 @@ const translations: Translations = {
       github: 'View on GitHub'
     },
     footer: {
-      description: 'Transform any text into natural-sounding speech with Amazon Polly\'s advanced AI voices.',
+      description: 'Transform any text into natural-sounding speech with Azure Speech Services\' advanced AI voices.',
       links: {
         title: 'Links',
         webstore: 'Chrome Web Store',
@@ -88,13 +88,13 @@ const translations: Translations = {
         help: 'Help Guide',
         changelog: 'Changelog',
         privacy: 'Privacy Policy',
-        docs: 'AWS Documentation'
+        docs: 'Azure Documentation'
       }
     }
   },
   'zh-CN': {
-    title: 'Polly for Chrome - 高级文字转语音扩展',
-    description: '使用 Amazon Polly 的先进 AI 语音技术，将网页上的任何文字转换为高质量、自然的音频。支持 40 多种语言和数百种语音。',
+    title: 'Azure Speech for Chrome - 高级文字转语音扩展',
+    description: '使用 Azure 语音服务的先进 AI 语音技术，将网页上的任何文字转换为高质量、自然的音频。支持 140 多种语言和 400 多种语音。',
     nav: {
       features: '功能特色',
       screenshots: '屏幕截图',
@@ -102,7 +102,7 @@ const translations: Translations = {
     },
     hero: {
       title: '将文字转换为自然语音',
-      description: '使用 Amazon Polly 的先进 AI 语音技术，将网页上的任何文字转换为高质量、自然的音频。可从 40 多种语言和数百种专业语音中选择。',
+      description: '使用 Azure 语音服务的先进 AI 语音技术，将网页上的任何文字转换为高质量、自然的音频。可从 140 多种语言和 400 多种专业语音中选择。',
       cta: {
         primary: '免费添加到 Chrome',
         secondary: '了解更多'
@@ -112,8 +112,8 @@ const translations: Translations = {
       title: '强大功能',
       subtitle: '专业文字转语音所需的一切功能',
       voices: {
-        title: '40 多种语言与数百种语音',
-        description: '可选择标准、神经、生成式和长篇语音引擎，拥有自然的 AI 语音'
+        title: '140 多种语言与 400 多种语音',
+        description: '可选择 Azure 语音服务的神经语音引擎，拥有自然的 AI 语音'
       },
       speed: {
         title: '多种播放速度选项',
@@ -141,11 +141,11 @@ const translations: Translations = {
       subtitle: '只需几个简单步骤即可开始使用',
       step1: {
         title: '安装扩展',
-        description: '从 Chrome 网上应用店将 Polly for Chrome 添加到您的浏览器'
+        description: '从 Chrome 网上应用店将 Azure Speech for Chrome 添加到您的浏览器'
       },
       step2: {
-        title: '设置 AWS',
-        description: '配置您的 AWS 凭证以访问 Amazon Polly（有免费套餐可用）'
+        title: '设置 Azure',
+        description: '配置您的 Azure 语音订阅密钥（有免费套餐可用）'
       },
       step3: {
         title: '开始聆听',
@@ -159,7 +159,7 @@ const translations: Translations = {
       github: '在 GitHub 上查看'
     },
     footer: {
-      description: '使用 Amazon Polly 的先进 AI 语音技术，将任何文字转换为自然语音。',
+      description: '使用 Azure 语音服务的先进 AI 语音技术，将任何文字转换为自然语音。',
       links: {
         title: '链接',
         webstore: 'Chrome 网上应用店',
@@ -171,13 +171,13 @@ const translations: Translations = {
         help: '帮助指南',
         changelog: '更新日志',
         privacy: '隐私政策',
-        docs: 'AWS 文档'
+        docs: 'Azure 文档'
       }
     }
   },
   'zh-TW': {
-    title: 'Polly for Chrome - 高級文字轉語音擴充功能',
-    description: '使用 Amazon Polly 的先進 AI 語音技術，將網頁上的任何文字轉換為高品質、自然的音訊。支援 40 多種語言和數百種語音。',
+    title: 'Azure Speech for Chrome - 高級文字轉語音擴充功能',
+    description: '使用 Azure 語音服務的先進 AI 語音技術，將網頁上的任何文字轉換為高品質、自然的音訊。支援 140 多種語言和 400 多種語音。',
     nav: {
       features: '功能特色',
       screenshots: '螢幕截圖',
@@ -185,7 +185,7 @@ const translations: Translations = {
     },
     hero: {
       title: '將文字轉換為自然語音',
-      description: '使用 Amazon Polly 的先進 AI 語音技術，將網頁上的任何文字轉換為高品質、自然的音訊。可從 40 多種語言和數百種專業語音中選擇。',
+      description: '使用 Azure 語音服務的先進 AI 語音技術，將網頁上的任何文字轉換為高品質、自然的音訊。可從 140 多種語言和 400 多種專業語音中選擇。',
       cta: {
         primary: '免費新增至 Chrome',
         secondary: '了解更多'
@@ -195,8 +195,8 @@ const translations: Translations = {
       title: '強大功能',
       subtitle: '專業文字轉語音所需的一切功能',
       voices: {
-        title: '40 多種語言與數百種語音',
-        description: '可選擇標準、神經、生成式和長篇語音引擎，擁有自然的 AI 語音'
+        title: '140 多種語言與 400 多種語音',
+        description: '可選擇 Azure 語音服務的神經語音引擎，擁有自然的 AI 語音'
       },
       speed: {
         title: '多種播放速度選項',
@@ -224,11 +224,11 @@ const translations: Translations = {
       subtitle: '只需幾個簡單步驟即可開始使用',
       step1: {
         title: '安裝擴充功能',
-        description: '從 Chrome 線上應用程式商店將 Polly for Chrome 新增至您的瀏覽器'
+        description: '從 Chrome 線上應用程式商店將 Azure Speech for Chrome 新增至您的瀏覽器'
       },
       step2: {
-        title: '設定 AWS',
-        description: '設定您的 AWS 認證以訪問 Amazon Polly（有免費方案可用）'
+        title: '設定 Azure',
+        description: '設定您的 Azure 語音訂閱金鑰（有免費方案可用）'
       },
       step3: {
         title: '開始聆聽',
@@ -242,7 +242,7 @@ const translations: Translations = {
       github: '在 GitHub 上查看'
     },
     footer: {
-      description: '使用 Amazon Polly 的先進 AI 語音技術，將任何文字轉換為自然語音。',
+      description: '使用 Azure 語音服務的先進 AI 語音技術，將任何文字轉換為自然語音。',
       links: {
         title: '連結',
         webstore: 'Chrome 線上應用程式商店',
@@ -254,13 +254,13 @@ const translations: Translations = {
         help: '說明指南',
         changelog: '更新記錄',
         privacy: '隱私政策',
-        docs: 'AWS 文件'
+        docs: 'Azure 文件'
       }
     }
   },
   hi: {
-    title: 'Polly for Chrome - प्रीमियम टेक्स्ट-टू-स्पीच एक्सटेंशन',
-    description: 'Amazon Polly के उन्नत AI आवाज़ों के साथ वेब पर किसी भी टेक्स्ट को उच्च-गुणवत्ता, प्राकृतिक ऑडियो में बदलें। 40+ भाषाएं, सैकड़ों आवाज़ें।',
+    title: 'Azure Speech for Chrome - प्रीमियम टेक्स्ट-टू-स्पीच एक्सटेंशन',
+    description: 'Azure Speech Services के उन्नत AI आवाज़ों के साथ वेब पर किसी भी टेक्स्ट को उच्च-गुणवत्ता, प्राकृतिक ऑडियो में बदलें। 140+ भाषाएं, 400+ आवाज़ें।',
     nav: {
       features: 'विशेषताएं',
       screenshots: 'स्क्रीनशॉट',
@@ -268,7 +268,7 @@ const translations: Translations = {
     },
     hero: {
       title: 'टेक्स्ट को प्राकृतिक आवाज़ में बदलें',
-      description: 'Amazon Polly के उन्नत AI आवाज़ों के साथ वेब पर किसी भी टेक्स्ट को उच्च-गुणवत्ता, प्राकृतिक ऑडियो में बदलें। 40+ भाषाओं और सैकड़ों पेशेवर आवाज़ों में से चुनें।',
+      description: 'Azure Speech Services के उन्नत AI आवाज़ों के साथ वेब पर किसी भी टेक्स्ट को उच्च-गुणवत्ता, प्राकृतिक ऑडियो में बदलें। 140+ भाषाओं और 400+ पेशेवर आवाज़ों में से चुनें।',
       cta: {
         primary: 'Chrome में जोड़ें - मुफ़्त',
         secondary: 'और जानें'
@@ -278,8 +278,8 @@ const translations: Translations = {
       title: 'शक्तिशाली विशेषताएं',
       subtitle: 'पेशेवर टेक्स्ट-टू-स्पीच के लिए आवश्यक सब कुछ',
       voices: {
-        title: '40+ भाषाएं और सैकड़ों आवाज़ें',
-        description: 'प्राकृतिक AI आवाज़ों के साथ स्टैंडर्ड, न्यूरल, जेनेरेटिव और लॉन्ग-फॉर्म वॉयस इंजन में से चुनें'
+        title: '140+ भाषाएं और 400+ आवाज़ें',
+        description: 'Azure Speech Services के प्राकृतिक AI आवाज़ों के साथ न्यूरल वॉयस इंजन में से चुनें'
       },
       speed: {
         title: 'कई स्पीड विकल्प',
@@ -307,11 +307,11 @@ const translations: Translations = {
       subtitle: 'बस कुछ सरल चरणों में शुरू करें',
       step1: {
         title: 'एक्सटेंशन इंस्टॉल करें',
-        description: 'Chrome वेब स्टोर से अपने ब्राउज़र में Polly for Chrome जोड़ें'
+        description: 'Chrome वेब स्टोर से अपने ब्राउज़र में Azure Speech for Chrome जोड़ें'
       },
       step2: {
-        title: 'AWS सेट करें',
-        description: 'Amazon Polly पहुंच के लिए अपने AWS क्रेडेंशियल कॉन्फ़िगर करें (मुफ़्त टियर उपलब्ध)'
+        title: 'Azure सेट करें',
+        description: 'अपनी Azure Speech सब्सक्रिप्शन कुंजी कॉन्फ़िगर करें (मुफ़्त टियर उपलब्ध)'
       },
       step3: {
         title: 'सुनना शुरू करें',
@@ -325,7 +325,7 @@ const translations: Translations = {
       github: 'GitHub पर देखें'
     },
     footer: {
-      description: 'Amazon Polly के उन्नत AI आवाज़ों के साथ किसी भी टेक्स्ट को प्राकृतिक वाक् में बदलें।',
+      description: 'Azure Speech Services के उन्नत AI आवाज़ों के साथ किसी भी टेक्स्ट को प्राकृतिक वाक् में बदलें।',
       links: {
         title: 'लिंक',
         webstore: 'Chrome वेब स्टोर',
@@ -337,7 +337,7 @@ const translations: Translations = {
         help: 'सहायता गाइड',
         changelog: 'चेंजलॉग',
         privacy: 'गोपनीयता नीति',
-        docs: 'AWS दस्तावेज़'
+        docs: 'Azure दस्तावेज़'
       }
     }
   }
@@ -420,7 +420,7 @@ function updateContent(lang: string): void {
 
   // Store language preference
   try {
-    localStorage.setItem('polly-preferred-language', lang)
+    localStorage.setItem('azure-speech-preferred-language', lang)
   } catch (e) {
     console.warn('Could not save language preference:', e)
   }
@@ -433,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load saved language preference or detect from browser
   let savedLang = 'en'
   try {
-    savedLang = localStorage.getItem('polly-preferred-language') || 'en'
+    savedLang = localStorage.getItem('azure-speech-preferred-language') || 'en'
   } catch (e) {
     console.warn('Could not load language preference:', e)
   }

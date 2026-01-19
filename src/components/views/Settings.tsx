@@ -50,25 +50,16 @@ export function Settings() {
       </div>
       <div>
         <div className="font-semibold text-neutral-700 mb-1.5 ml-1 flex items-center">
-          {t('settings.aws_credentials_title')}
+          {t('settings.azure_credentials_title')}
         </div>
         <div className="bg-white p-3 rounded shadow-sm border flex flex-col gap-2">
           <Text
             error={credentialsError}
-            label={t('settings.access_key_label')}
-            placeholder={t('settings.access_key_placeholder')}
-            value={sync.accessKeyId}
-            onChange={(accessKeyId) =>
-              setSync({ ...sync, accessKeyId, credentialsValid: false })
-            }
-            type="password"
-          />
-          <Text
-            label={t('settings.secret_key_label')}
-            placeholder={t('settings.secret_key_placeholder')}
-            value={sync.secretAccessKey}
-            onChange={(secretAccessKey) =>
-              setSync({ ...sync, secretAccessKey, credentialsValid: false })
+            label={t('settings.subscription_key_label')}
+            placeholder={t('settings.subscription_key_placeholder')}
+            value={sync.subscriptionKey}
+            onChange={(subscriptionKey) =>
+              setSync({ ...sync, subscriptionKey, credentialsValid: false })
             }
             type="password"
           />
@@ -87,7 +78,7 @@ export function Settings() {
                 Icon={Key}
                 onClick={handleCredentialsValidation}
                 submitting={credentialsValidating}
-                ping={!sync.accessKeyId || !sync.secretAccessKey || !sync.region}
+                ping={!sync.subscriptionKey || !sync.region}
               >
                 {t('settings.validate_credentials_button')}
               </Button>

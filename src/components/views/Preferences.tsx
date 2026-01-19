@@ -171,17 +171,17 @@ export function Preferences() {
 function getVoiceOptions(session: SessionStorage, language: string, engine: string): VoiceOption[] {
   if (!session?.voices) return []
   const voicesInLanguage = session.voices?.filter((voice) =>
-    voice.languageCodes.includes(language) && voice.supportedEngines.includes(engine)
+    voice.locale === language && voice.voiceType === engine
   ) || []
 
-  const voiceNames = voicesInLanguage.map(({ name: value, ssmlGender }) => {
-    // AWS Polly voice names are already human-readable (e.g., "Joanna", "Matthew")
-    const title = value
-    const description =
-      ssmlGender.toLowerCase().charAt(0).toUpperCase() +
-      ssmlGender.toLowerCase().slice(1)
+  const voiceNames = voicesInLanguage.map(({ name, shortName, localName, gender }) => {
+    // Use the shortName for display (e.g., "JennyNeural") and name for value (full Azure voice name)
+    // Extract the voice name part from shortName (e.g., "en-US-JennyNeural" -> "Jenny Neural")
+    const displayName = shortName.replace(/^[a-z]+-[A-Z]+-/, '').replace(/Neural$/, ' Neural').replace(/Standard$/, ' Standard').trim()
+    const title = localName || displayName
+    const description = gender.charAt(0).toUpperCase() + gender.slice(1).toLowerCase()
 
-    return { value, title, description }
+    return { value: name, title, description }
   })
 
   const sortedVoices = voiceNames.sort((a, b) => {
@@ -202,45 +202,31 @@ function getLanguageOptions(session: SessionStorage): LanguageOption[] {
 
   const languageNames = session.languages?.map((value) => {
     try {
-      // AWS Polly uses extended language codes like 'en-GB-WLS' that aren't valid BCP 47
-      // Normalize to standard BCP 47 format for DisplayNames
-      let normalizedCode = value
-      const parts = value.split('-')
-
-      // Handle AWS Polly's three-part codes (e.g., en-GB-WLS -> en-GB)
-      if (parts.length > 2) {
-        normalizedCode = `${parts[0]}-${parts[1]}`
-      }
-
-      // Try to get display name with normalized code first
+      // Azure uses standard locale codes like 'en-US', 'zh-CN', etc.
       let displayName
       try {
-        displayName = displayNames.of(normalizedCode)
+        displayName = displayNames.of(value)
       } catch (e) {
-        // If normalized code fails, try just the language part
+        // If the code fails, try just the language part
+        const parts = value.split('-')
         displayName = displayNames.of(parts[0])
       }
 
       if (!displayName) {
         // Create a readable fallback from the original code
+        const parts = value.split('-')
         const language = parts[0].toUpperCase()
         const region = parts[1] ? parts[1].toUpperCase() : ''
-        const variant = parts[2] ? parts[2] : ''
-        const title = variant ? `${language} (${region}-${variant})` : region ? `${language} (${region})` : language
-        return { value, title, description: 'Custom language variant' }
+        const title = region ? `${language} (${region})` : language
+        return { value, title, description: 'Language variant' }
       }
 
+      const parts = value.split('-')
       let [title, ...tail] = displayName.split(' ')
 
-      // Add region/variant info from original AWS code
+      // Add region info from locale code
       if (parts.length > 1) {
-        if (parts.length > 2) {
-          // Three parts: language-region-variant (e.g., en-GB-WLS)
-          title += ` (${parts[1]}-${parts[2]})`
-        } else {
-          // Two parts: language-region (e.g., en-GB)
-          title += ` (${parts[1]})`
-        }
+        title += ` (${parts[1]})`
       }
 
       let description = tail.join(' ')
@@ -254,12 +240,9 @@ function getLanguageOptions(session: SessionStorage): LanguageOption[] {
       const parts = value.split('-')
       const language = parts[0] ? parts[0].toUpperCase() : 'Unknown'
       const region = parts[1] ? parts[1].toUpperCase() : ''
-      const variant = parts[2] ? parts[2] : ''
 
       let title = language
-      if (region && variant) {
-        title += ` (${region}-${variant})`
-      } else if (region) {
+      if (region) {
         title += ` (${region})`
       }
 
@@ -280,19 +263,17 @@ function getEngineOptions(session: SessionStorage, language: string): EngineOpti
   if (!session?.voices) return []
 
   const voicesInLanguage = session.voices?.filter((voice) =>
-    voice.languageCodes.includes(language)
+    voice.locale === language
   ) || []
 
   const engines = new Set(
-    voicesInLanguage.map((voice) => voice.supportedEngines).flat()
+    voicesInLanguage.map((voice) => voice.voiceType)
   )
 
   const engineOptions = Array.from(engines).map((engine) => {
     const engineNames = {
-      'standard': { title: 'Standard', description: 'Basic quality, cost-effective' },
-      'neural': { title: 'Neural', description: 'High quality, natural sounding' },
-      'generative': { title: 'Generative', description: 'Most natural, latest technology' },
-      'long-form': { title: 'Long-form', description: 'Optimized for long content' }
+      'standard': { title: 'Standard', description: 'Basic quality (legacy)' },
+      'neural': { title: 'Neural', description: 'High quality, natural sounding' }
     }
 
     const engineInfo = engineNames[engine.toLowerCase()] || {
@@ -307,8 +288,9 @@ function getEngineOptions(session: SessionStorage, language: string): EngineOpti
     }
   })
 
+  // Sort with neural first (Azure primarily uses neural now)
   const sortedEngines = engineOptions.sort((a, b) => {
-    const order = ['standard', 'neural', 'generative', 'long-form']
+    const order = ['neural', 'standard']
     const aIndex = order.indexOf(a.value.toLowerCase())
     const bIndex = order.indexOf(b.value.toLowerCase())
 

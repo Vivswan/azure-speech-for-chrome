@@ -1,56 +1,53 @@
-# Polly For Chrome
+# Azure Speech For Chrome
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kdcbeehimalgmeoeajnflggejlemclnn.svg)](https://chromewebstore.google.com/detail/kdcbeehimalgmeoeajnflggejlemclnn)
-[![GitHub Pages](https://img.shields.io/badge/website-polly--for--chrome-blue)](https://vivswan.github.io/polly-for-chrome/)
-[![GitHub](https://img.shields.io/github/license/vivswan/polly-for-chrome)](LICENSE)
+[![GitHub Pages](https://img.shields.io/badge/website-azure--speech--for--chrome-blue)](https://vivswan.github.io/azure-speech-for-chrome/)
+[![GitHub](https://img.shields.io/github/license/vivswan/azure-speech-for-chrome)](LICENSE)
 
-A premium Chrome extension that transforms any text on the web into high-quality, natural-sounding speech using Amazon
-Polly's advanced AI voices. Support for 40+ languages and hundreds of professional voices with multilingual interface
+A premium Chrome extension that transforms any text on the web into high-quality, natural-sounding speech using Azure
+Speech Services' advanced AI voices. Support for 140+ languages and 400+ professional voices with multilingual interface
 support.
 
-🌐 **[Visit Website](https://vivswan.github.io/polly-for-chrome/)** | 🛒
+🌐 **[Visit Website](https://vivswan.github.io/azure-speech-for-chrome/)** | 🛒
 **[Chrome Web Store](https://chromewebstore.google.com/detail/kdcbeehimalgmeoeajnflggejlemclnn)**
 
 ## ✨ Key Features
 
-* **🎵 40+ Languages & Hundreds of Voices** - Choose from Standard, Neural, Generative, and Long-form voice engines
+* **🎵 140+ Languages & 400+ Voices** - Choose from Neural voice engines with natural-sounding AI voices
 * **🌍 Multi-Language Interface** - Available in English, Chinese (Simplified & Traditional), and Hindi
 * **⚡ Multiple Speed Options** - Context menu with 1x, 1.5x, and 2x playback speeds
 * **🛡️ Smart Text Processing** - Automatically sanitizes HTML content using sanitize-html library
 * **⌨️ Keyboard Shortcuts** - Quick access with Ctrl+Shift+S (read aloud) and Ctrl+Shift+E (download)
 * **💾 Audio Downloads** - Save as high-quality MP3 files for offline use
 * **🔧 SSML Support** - Advanced markup for precise speech control
-* **🔒 Secure & Private** - Your AWS credentials stay local and private
+* **🔒 Secure & Private** - Your Azure credentials stay local and private
 
 ## 🚀 Quick Start
 
 1. **Install Extension**: Add
    from [Chrome Web Store](https://chromewebstore.google.com/detail/kdcbeehimalgmeoeajnflggejlemclnn)
-2. **Setup AWS**: Create AWS account and configure Polly
-   access ([detailed guide](https://vivswan.github.io/polly-for-chrome/#install))
+2. **Setup Azure**: Create Azure account and configure Speech Services
+   ([detailed guide](https://vivswan.github.io/azure-speech-for-chrome/#install))
 3. **Start Converting**: Highlight any text, right-click, and choose your preferred speed
 
 ## 💰 Pricing
 
 - **Extension**: Completely FREE
-- **AWS Free Tier**: 5 million characters per month for 12 months
-- **Standard voices**: $4 per million characters
+- **Azure Free Tier**: 500,000 characters per month free for neural voices
 - **Neural voices**: $16 per million characters
-- **Generative voices**: $30 per million characters
 
-[View detailed pricing →](https://aws.amazon.com/polly/pricing/)
+[View detailed pricing →](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/)
 
-## 🔧 AWS Setup
+## 🔧 Azure Setup
 
 ### Quick Setup
 
-1. Create an AWS account at [aws.amazon.com](https://aws.amazon.com)
-2. Go to IAM service and create a new user
-3. Attach the `AmazonPollyReadOnlyAccess` policy
-4. Generate access keys for the user
-5. Enter credentials in the extension settings
+1. Create an Azure account at [azure.microsoft.com](https://azure.microsoft.com)
+2. Go to Azure Portal and create a Speech Services resource
+3. Copy your subscription key from "Keys and Endpoint"
+4. Enter the subscription key and region in the extension settings
 
-For detailed setup instructions with screenshots, visit our [help guide](https://vivswan.github.io/polly-for-chrome/).
+For detailed setup instructions with screenshots, visit our [help guide](https://vivswan.github.io/azure-speech-for-chrome/).
 
 ## 🛠️ Development
 
@@ -108,7 +105,7 @@ Website files are generated in the `public` folder.
 
 The project includes a marketing website built with React and Tailwind CSS:
 
-- **URL**: [https://vivswan.github.io/polly-for-chrome/](https://vivswan.github.io/polly-for-chrome/)
+- **URL**: [https://vivswan.github.io/azure-speech-for-chrome/](https://vivswan.github.io/azure-speech-for-chrome/)
 - **Auto-deployed** via GitHub Actions on every push to main
 - **Build command**: `npm run build`
 
@@ -130,10 +127,10 @@ the [MIT License](LICENSE).
 
 ## 🔗 Links
 
-- **Website**: [https://vivswan.github.io/polly-for-chrome/](https://vivswan.github.io/polly-for-chrome/)
+- **Website**: [https://vivswan.github.io/azure-speech-for-chrome/](https://vivswan.github.io/azure-speech-for-chrome/)
 - **Chrome Web Store**: [Install Extension](https://chromewebstore.google.com/detail/kdcbeehimalgmeoeajnflggejlemclnn)
-- **Issues**: [Report Bugs](https://github.com/vivswan/polly-for-chrome/issues)
-- **AWS Polly Docs**: [Documentation](https://docs.aws.amazon.com/polly/)
+- **Issues**: [Report Bugs](https://github.com/vivswan/azure-speech-for-chrome/issues)
+- **Azure Speech Docs**: [Documentation](https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/)
 
 ---
 

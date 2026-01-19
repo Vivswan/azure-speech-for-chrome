@@ -71,21 +71,21 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ steps.version.outputs.version }}
-          name: Polly For Chrome v${{ steps.version.outputs.version }}
+          name: Azure Speech For Chrome v${{ steps.version.outputs.version }}
           body: |
-            ## Polly For Chrome v${{ steps.version.outputs.version }}
-            
+            ## Azure Speech For Chrome v${{ steps.version.outputs.version }}
+
             ### Installation
             1. Download the zip file
             2. Extract the contents
             3. Go to chrome://extensions
             4. Enable "Developer mode"
             5. Click "Load unpacked" and select the extracted folder
-            
-            [Full documentation](https://github.com/Vivswan/polly-for-chrome#readme)
+
+            [Full documentation](https://github.com/Vivswan/azure-speech-for-chrome#readme)
           files: |
-            builds/polly-for-chrome-v${{ steps.version.outputs.version }}.zip
-            builds/polly-for-chrome-v${{ steps.version.outputs.version }}.crx
+            builds/azure-speech-for-chrome-v${{ steps.version.outputs.version }}.zip
+            builds/azure-speech-for-chrome-v${{ steps.version.outputs.version }}.crx
           draft: false
           prerelease: false
         env:
@@ -175,7 +175,7 @@ jobs:
           body: |
             ## Version Bump
             This PR automatically bumps the version from ${{ steps.next_version.outputs.current_version }} to ${{ steps.next_version.outputs.next_version }} after a successful release.
-            
+
             This PR was automatically created by the release workflow.
           labels: |
             version-bump

@@ -1,7 +1,7 @@
 {
-  "name": "polly-for-chrome",
-  "version": "1.0.6",
-  "description": "A wrapper for Amazon Polly that transforms highlighted text into high-quality natural sounding audio.",
+  "name": "azure-speech-for-chrome",
+  "version": "1.0.0",
+  "description": "A wrapper for Azure Speech Services that transforms highlighted text into high-quality natural sounding audio.",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -40,7 +40,7 @@
     "yaml-loader": "^0.8.1"
   },
   "dependencies": {
-    "@aws-sdk/client-polly": "^3.0.0",
+    "microsoft-cognitiveservices-speech-sdk": "^1.47.0",
     "@tailwindcss/postcss": "^4.1.8",
     "@types/sanitize-html": "^2.16.0",
     "dotenv": "^16.5.0",

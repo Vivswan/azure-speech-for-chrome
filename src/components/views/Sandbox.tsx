@@ -9,7 +9,7 @@ import { useTranslation } from '../../localization/translation'
 export function Sandbox() {
   const { ready, sync } = useSync()
   const { t } = useTranslation()
-  const [text, setText] = useLocalStorage('sandboxInput', 'Hello Polly!')
+  const [text, setText] = useLocalStorage('sandboxInput', 'Hello Azure Speech!')
   const [valueError, setValueError] = useState('')
   const [downloading, setDownloading] = useState(false)
   const [playing, setPlaying] = useState(false)

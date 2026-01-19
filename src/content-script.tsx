@@ -91,7 +91,7 @@ function ContentScript() {
               Icon={GitHub}
               onClick={() =>
                 window.open(
-                  `https://github.com/vivswan/polly-for-chrome/issues/new?title=${encodeURIComponent(error.title)}&body=${encodeURIComponent(error.message)}`
+                  `https://github.com/vivswan/azure-speech-for-chrome/issues/new?title=${encodeURIComponent(error.title)}&body=${encodeURIComponent(error.message)}`
                 )
               }
             >

@@ -15,7 +15,7 @@ interface TranslationContext {
 }
 
 const DEFAULT_LOCALE = 'en'
-const STORAGE_KEY = 'polly_locale'
+const STORAGE_KEY = 'azure_speech_locale'
 
 // All translations pre-loaded
 const translations = {

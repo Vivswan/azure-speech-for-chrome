@@ -62,7 +62,7 @@ export function Sidebar() {
         <Sidebar.Item
           Icon={GitHub}
           color="bg-neutral-600"
-          to="https://github.com/vivswan/polly-for-chrome"
+          to="https://github.com/vivswan/azure-speech-for-chrome"
         >
           {t('sidebar.contribute')}
         </Sidebar.Item>

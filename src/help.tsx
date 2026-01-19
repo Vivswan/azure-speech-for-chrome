@@ -20,7 +20,7 @@ function Help() {
             <div className="flex items-center text-center">
               <img
                 src="images/icon_1000.png"
-                alt="Polly for Chrome"
+                alt="Azure Speech for Chrome"
                 className="mr-4 pt-0.5"
                 style={{ width: '64px' }}
               />
@@ -52,31 +52,31 @@ function Help() {
                 <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
                   <p className="text-blue-800 font-semibold">{t('help.getting_started.prerequisites')}</p>
                   <ul className="list-disc list-inside text-blue-700 mt-2 space-y-1">
-                    <li>{t('help.getting_started.aws_account')}</li>
-                    <li>{t('help.getting_started.iam_understanding')}</li>
+                    <li>{t('help.getting_started.azure_account')}</li>
+                    <li>{t('help.getting_started.resource_understanding')}</li>
                   </ul>
                 </div>
               </div>
             }
           />
 
-          {/* AWS Setup */}
+          {/* Azure Setup */}
           <Section
-            title={t('help.aws_setup.title')}
+            title={t('help.azure_setup.title')}
             content={
               <div className="space-y-6">
                 <Step
                   number="1"
-                  title={t('help.aws_setup.create_account.title')}
+                  title={t('help.azure_setup.create_account.title')}
                   content={
                     <div>
-                      <p>{t('help.aws_setup.create_account.description')}</p>
+                      <p>{t('help.azure_setup.create_account.description')}</p>
                       <ol className="list-decimal list-inside mt-2 space-y-1">
-                        <li>{t('help.aws_setup.create_account.step1')} <a href="https://aws.amazon.com" target="_blank"
-                                     className="text-blue-600 hover:underline">aws.amazon.com</a></li>
-                        <li>{t('help.aws_setup.create_account.step2')}</li>
-                        <li>{t('help.aws_setup.create_account.step3')}</li>
-                        <li>{t('help.aws_setup.create_account.step4')}</li>
+                        <li>{t('help.azure_setup.create_account.step1')} <a href="https://azure.microsoft.com" target="_blank"
+                                     className="text-blue-600 hover:underline">azure.microsoft.com</a></li>
+                        <li>{t('help.azure_setup.create_account.step2')}</li>
+                        <li>{t('help.azure_setup.create_account.step3')}</li>
+                        <li>{t('help.azure_setup.create_account.step4')}</li>
                       </ol>
                     </div>
                   }
@@ -84,18 +84,19 @@ function Help() {
 
                 <Step
                   number="2"
-                  title={t('help.aws_setup.create_user.title')}
+                  title={t('help.azure_setup.create_resource.title')}
                   content={
                     <div>
-                      <p>{t('help.aws_setup.create_user.description')}</p>
+                      <p>{t('help.azure_setup.create_resource.description')}</p>
                       <ol className="list-decimal list-inside mt-2 space-y-1">
-                        <li>{t('help.aws_setup.create_user.step1')}</li>
-                        <li>{t('help.aws_setup.create_user.step2')}</li>
-                        <li>{t('help.aws_setup.create_user.step3')}</li>
-                        <li>{t('help.aws_setup.create_user.step4')}</li>
-                        <li>{t('help.aws_setup.create_user.step5')}</li>
-                        <li>{t('help.aws_setup.create_user.step6')}</li>
-                        <li>{t('help.aws_setup.create_user.step7')}</li>
+                        <li>{t('help.azure_setup.create_resource.step1')}</li>
+                        <li>{t('help.azure_setup.create_resource.step2')}</li>
+                        <li>{t('help.azure_setup.create_resource.step3')}</li>
+                        <li>{t('help.azure_setup.create_resource.step4')}</li>
+                        <li>{t('help.azure_setup.create_resource.step5')}</li>
+                        <li>{t('help.azure_setup.create_resource.step6')}</li>
+                        <li>{t('help.azure_setup.create_resource.step7')}</li>
+                        <li>{t('help.azure_setup.create_resource.step8')}</li>
                       </ol>
                     </div>
                   }
@@ -103,24 +104,21 @@ function Help() {
 
                 <Step
                   number="3"
-                  title={t('help.aws_setup.generate_keys.title')}
+                  title={t('help.azure_setup.get_keys.title')}
                   content={
                     <div>
-                      <p>{t('help.aws_setup.generate_keys.description')}</p>
+                      <p>{t('help.azure_setup.get_keys.description')}</p>
                       <ol className="list-decimal list-inside mt-2 space-y-1">
-                        <li>{t('help.aws_setup.generate_keys.step1')}</li>
-                        <li>{t('help.aws_setup.generate_keys.step2')}</li>
-                        <li>{t('help.aws_setup.generate_keys.step3')}</li>
-                        <li>{t('help.aws_setup.generate_keys.step4')}</li>
-                        <li>{t('help.aws_setup.generate_keys.step5')}</li>
-                        <li>{t('help.aws_setup.generate_keys.step6')}</li>
-                        <li>{t('help.aws_setup.generate_keys.step7')}</li>
+                        <li>{t('help.azure_setup.get_keys.step1')}</li>
+                        <li>{t('help.azure_setup.get_keys.step2')}</li>
+                        <li>{t('help.azure_setup.get_keys.step3')}</li>
+                        <li>{t('help.azure_setup.get_keys.step4')}</li>
                       </ol>
                       <div className="bg-red-50 border-l-4 border-red-400 p-4 mt-4">
                         <p
-                          className="text-red-800 font-semibold">{t('help.aws_setup.generate_keys.security_warning')}</p>
+                          className="text-red-800 font-semibold">{t('help.azure_setup.get_keys.security_warning')}</p>
                         <p className="text-red-700 mt-1">
-                          {t('help.aws_setup.generate_keys.security_text')}
+                          {t('help.azure_setup.get_keys.security_text')}
                         </p>
                       </div>
                     </div>
@@ -129,25 +127,25 @@ function Help() {
 
                 <Step
                   number="4"
-                  title={t('help.aws_setup.choose_region.title')}
+                  title={t('help.azure_setup.choose_region.title')}
                   content={
                     <div>
-                      <p>{t('help.aws_setup.choose_region.description')}</p>
+                      <p>{t('help.azure_setup.choose_region.description')}</p>
                       <div className="grid grid-cols-2 gap-4 mt-4">
                         <div>
-                          <strong>{t('help.aws_setup.choose_region.popular_regions')}</strong>
+                          <strong>{t('help.azure_setup.choose_region.popular_regions')}</strong>
                           <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
-                            <li><code>us-east-1</code> - {t('help.aws_setup.choose_region.us_east')}</li>
-                            <li><code>us-west-2</code> - {t('help.aws_setup.choose_region.us_west')}</li>
-                            <li><code>eu-west-1</code> - {t('help.aws_setup.choose_region.eu_west')}</li>
-                            <li><code>ap-southeast-1</code> - {t('help.aws_setup.choose_region.ap_southeast')}</li>
+                            <li><code>eastus</code> - {t('help.azure_setup.choose_region.us_east')}</li>
+                            <li><code>westus2</code> - {t('help.azure_setup.choose_region.us_west')}</li>
+                            <li><code>westeurope</code> - {t('help.azure_setup.choose_region.eu_west')}</li>
+                            <li><code>southeastasia</code> - {t('help.azure_setup.choose_region.ap_southeast')}</li>
                           </ul>
                         </div>
                         <div>
-                          <strong>{t('help.aws_setup.choose_region.all_regions')}</strong>
+                          <strong>{t('help.azure_setup.choose_region.all_regions')}</strong>
                           <p className="text-sm mt-2">
-                            <a href="https://docs.aws.amazon.com/general/latest/gr/pol.html" target="_blank"
-                               className="text-blue-600 hover:underline">{t('help.aws_setup.choose_region.see_docs')}</a>
+                            <a href="https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/regions" target="_blank"
+                               className="text-blue-600 hover:underline">{t('help.azure_setup.choose_region.see_docs')}</a>
                           </p>
                         </div>
                       </div>
@@ -174,7 +172,6 @@ function Help() {
                         <li>{t('help.extension_setup.enter_credentials.step3')}</li>
                         <li>{t('help.extension_setup.enter_credentials.step4')}</li>
                         <li>{t('help.extension_setup.enter_credentials.step5')}</li>
-                        <li>{t('help.extension_setup.enter_credentials.step6')}</li>
                       </ol>
                     </div>
                   }
@@ -338,7 +335,7 @@ function Help() {
                     &lt;/speak&gt;
                   </div>
                   <p className="text-sm text-gray-600 mt-2">
-                    <a href="https://docs.aws.amazon.com/polly/latest/dg/ssml.html" target="_blank"
+                    <a href="https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank"
                        className="text-blue-600 hover:underline">{t('help.audio_features.ssml_support.learn_more')}</a>
                   </p>
                 </div>
@@ -358,39 +355,13 @@ function Help() {
                   </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-2">{t('help.pricing.standard_voices.title')}</h4>
-                    <ul className="space-y-1 text-sm">
-                      <li>{t('help.pricing.standard_voices.price_million')}</li>
-                      <li>{t('help.pricing.standard_voices.price_char')}</li>
-                      <li>{t('help.pricing.standard_voices.description')}</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">{t('help.pricing.neural_voices.title')}</h4>
-                    <ul className="space-y-1 text-sm">
-                      <li>{t('help.pricing.neural_voices.price_million')}</li>
-                      <li>{t('help.pricing.neural_voices.price_char')}</li>
-                      <li>{t('help.pricing.neural_voices.description')}</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">{t('help.pricing.generative_voices.title')}</h4>
-                    <ul className="space-y-1 text-sm">
-                      <li>{t('help.pricing.generative_voices.price_million')}</li>
-                      <li>{t('help.pricing.generative_voices.price_char')}</li>
-                      <li>{t('help.pricing.generative_voices.description')}</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">{t('help.pricing.longform_voices.title')}</h4>
-                    <ul className="space-y-1 text-sm">
-                      <li>{t('help.pricing.longform_voices.price_million')}</li>
-                      <li>{t('help.pricing.longform_voices.price_char')}</li>
-                      <li>{t('help.pricing.longform_voices.description')}</li>
-                    </ul>
-                  </div>
+                <div>
+                  <h4 className="font-semibold mb-2">{t('help.pricing.neural_voices.title')}</h4>
+                  <ul className="space-y-1 text-sm">
+                    <li>{t('help.pricing.neural_voices.price_million')}</li>
+                    <li>{t('help.pricing.neural_voices.price_char')}</li>
+                    <li>{t('help.pricing.neural_voices.description')}</li>
+                  </ul>
                 </div>
 
                 <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
@@ -400,12 +371,11 @@ function Help() {
                     <li>{t('help.pricing.cost_optimization.tip2')}</li>
                     <li>{t('help.pricing.cost_optimization.tip3')}</li>
                     <li>{t('help.pricing.cost_optimization.tip4')}</li>
-                    <li>{t('help.pricing.cost_optimization.tip5')}</li>
                   </ul>
                 </div>
 
                 <p className="text-sm text-gray-600">
-                  <a href="https://aws.amazon.com/polly/pricing/" target="_blank"
+                  <a href="https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/" target="_blank"
                      className="text-blue-600 hover:underline">{t('help.pricing.current_pricing')}</a>
                 </p>
               </div>
@@ -478,19 +448,19 @@ function Help() {
                     <h4 className="font-semibold mb-2">{t('help.support.extension_issues.title')}</h4>
                     <ul className="space-y-2">
                       <li>
-                        <a href="https://github.com/vivswan/polly-for-chrome/issues" target="_blank"
+                        <a href="https://github.com/vivswan/azure-speech-for-chrome/issues" target="_blank"
                            className="text-blue-600 hover:underline">
                           {t('help.support.extension_issues.report_bugs')}
                         </a>
                       </li>
                       <li>
-                        <a href="https://github.com/vivswan/polly-for-chrome" target="_blank"
+                        <a href="https://github.com/vivswan/azure-speech-for-chrome" target="_blank"
                            className="text-blue-600 hover:underline">
                           {t('help.support.extension_issues.view_source')}
                         </a>
                       </li>
                       <li>
-                        <a href="https://vivswan.github.io/polly-for-chrome/privacy-policy.html" target="_blank"
+                        <a href="https://vivswan.github.io/azure-speech-for-chrome/privacy-policy.html" target="_blank"
                            className="text-blue-600 hover:underline">
                           {t('help.support.extension_issues.privacy_policy')}
                         </a>
@@ -498,18 +468,18 @@ function Help() {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">{t('help.support.aws_support.title')}</h4>
+                    <h4 className="font-semibold mb-2">{t('help.support.azure_support.title')}</h4>
                     <ul className="space-y-2">
                       <li>
-                        <a href="https://docs.aws.amazon.com/polly/" target="_blank"
+                        <a href="https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/" target="_blank"
                            className="text-blue-600 hover:underline">
-                          {t('help.support.aws_support.documentation')}
+                          {t('help.support.azure_support.documentation')}
                         </a>
                       </li>
                       <li>
-                        <a href="https://aws.amazon.com/support/" target="_blank"
+                        <a href="https://azure.microsoft.com/en-us/support/" target="_blank"
                            className="text-blue-600 hover:underline">
-                          {t('help.support.aws_support.support_center')}
+                          {t('help.support.azure_support.support_center')}
                         </a>
                       </li>
                     </ul>

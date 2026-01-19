@@ -1,5 +1,5 @@
 // Changelog functionality
-console.log('Polly for Chrome changelog loaded')
+console.log('Azure Speech for Chrome changelog loaded')
 
 // Types
 interface Change {
@@ -19,113 +19,40 @@ interface Version {
 // Changelog data
 const versions: Version[] = [
   {
-    version: '1.0.5',
-    type: 'minor',
-    title: '🌍 Internationalization & Infrastructure',
-    changes: [
-      {
-        type: 'feature',
-        title: 'Multi-Language Interface',
-        description: 'Added localization support for Chinese (Simplified/Traditional) and Hindi',
-        details: [
-          'YAML-based translation system with validation',
-          'Dynamic language switching in all UI components',
-          'Localized help documentation and settings'
-        ]
-      },
-      {
-        type: 'improvement',
-        title: 'Enhanced Build System',
-        description: 'Restructured project with improved build configuration and development tools',
-        details: [
-          'Bun support for faster builds',
-          'Translation validation scripts',
-          'Better TypeScript configuration and error handling'
-        ]
-      }
-    ]
-  },
-  {
-    version: '1.0.3',
-    type: 'patch',
-    title: '🌐 Website & Chrome Web Store Preparation',
-    changes: []
-  },
-  {
-    version: '1.0.2',
-    type: 'minor',
-    title: '🚀 Enhanced Speed Controls & Text Safety',
-    changes: [
-      {
-        type: 'feature',
-        title: 'Multiple Speed Context Menu Options',
-        description: 'Added dedicated context menu options for different playback speeds',
-        details: [
-          'Read Aloud (1x) - Normal speed playback',
-          'Read Aloud (1.5x) - 1.5x speed playback',
-          'Read Aloud (2x) - 2x speed playback',
-          'Speed options temporarily override global settings',
-          'Original \'Read Aloud\' option uses preferred speed setting'
-        ]
-      },
-      {
-        type: 'security',
-        title: 'Smart Text Sanitization',
-        description: 'Comprehensive text processing for safe speech synthesis',
-        details: [
-          'Using sanitize-html library for improved HTML processing',
-          'Automatically removes HTML tags while preserving content',
-          'Safely escapes XML special characters (<, >, &, ", \')',
-          'Completely removes dangerous content (script, style tags)',
-          'Properly handles HTML entities (decodes then re-encodes)',
-          'Preserves valid SSML markup for advanced users',
-          'Protects against malformed or malicious content'
-        ]
-      },
-      {
-        type: 'improvement',
-        title: 'Refactored Speech Synthesis',
-        description: 'Improved code architecture for better maintainability',
-        details: [
-          'Synthesize function now accepts structured parameters',
-          'Better separation of concerns between functions',
-          'More consistent parameter handling throughout codebase',
-          'Enhanced type safety with TypeScript interfaces'
-        ]
-      },
-      {
-        type: 'improvement',
-        title: 'Enhanced Help Documentation',
-        description: 'Updated help guide with new features and examples',
-        details: [
-          'Added documentation for speed control options',
-          'Included text sanitization examples and explanations',
-          'Expanded troubleshooting guides',
-          'Better organization of feature descriptions'
-        ]
-      }
-    ]
-  },
-  {
-    version: '1.0.1',
-    type: 'patch',
-    title: '🔧 Bug Fixes & Optimizations',
-    changes: []
-  },
-  {
     version: '1.0.0',
     type: 'major',
     title: '🎉 Initial Release',
     changes: [
       {
         type: 'feature',
-        title: 'Amazon Polly Integration',
-        description: 'High-quality text-to-speech using Amazon Web Services',
+        title: 'Azure Speech Services Integration',
+        description: 'High-quality text-to-speech using Microsoft Azure Speech Services',
         details: [
-          'Support for 40+ languages and hundreds of voices',
-          'Multiple voice engines: Standard, Neural, Generative, Long-form',
+          'Access to 400+ neural voices across 140+ languages',
+          'Natural-sounding speech synthesis',
           'Customizable speed, pitch, and volume controls',
           'SSML markup support for advanced speech control'
+        ]
+      },
+      {
+        type: 'feature',
+        title: 'Multi-Language Interface',
+        description: 'Extension interface available in multiple languages',
+        details: [
+          'English, Chinese (Simplified/Traditional), and Hindi support',
+          'Dynamic language switching in all UI components',
+          'Localized help documentation and settings'
+        ]
+      },
+      {
+        type: 'feature',
+        title: 'Multiple Speed Options',
+        description: 'Context menu with different playback speeds',
+        details: [
+          'Read Aloud (1x) - Normal speed playback',
+          'Read Aloud (1.5x) - 1.5x speed playback',
+          'Read Aloud (2x) - 2x speed playback',
+          'Speed options temporarily override global settings'
         ]
       },
       {
@@ -150,6 +77,16 @@ const versions: Version[] = [
       },
       {
         type: 'feature',
+        title: 'Smart Text Processing',
+        description: 'Comprehensive text processing for safe speech synthesis',
+        details: [
+          'Automatically removes HTML tags while preserving content',
+          'Safely escapes XML special characters',
+          'Preserves valid SSML markup for advanced users'
+        ]
+      },
+      {
+        type: 'feature',
         title: 'Audio Format Options',
         description: 'Multiple audio formats for different needs',
         details: [
@@ -161,11 +98,11 @@ const versions: Version[] = [
       {
         type: 'feature',
         title: 'Secure Credential Management',
-        description: 'Safe storage of AWS credentials',
+        description: 'Safe storage of Azure credentials',
         details: [
-          'Local storage of AWS access keys',
+          'Local storage of subscription key',
           'Credential validation with helpful error messages',
-          'Support for all AWS regions'
+          'Support for all Azure Speech regions'
         ]
       }
     ]

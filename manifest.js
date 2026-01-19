@@ -1,6 +1,6 @@
 export default {
-  name: 'Polly for Chrome',
-  description: 'Transform any text on the web into high-quality, natural-sounding audio with Amazon Polly\'s advanced AI voices.',
+  name: 'Azure Speech for Chrome',
+  description: 'Transform any text on the web into high-quality, natural-sounding audio with Azure Speech Services\' advanced AI voices.',
   version: process.env.npm_package_version,
   manifest_version: 3,
   permissions: [
@@ -41,7 +41,7 @@ export default {
     }
   ],
   action: {
-    default_title: 'Polly for Chrome',
+    default_title: 'Azure Speech for Chrome',
     default_popup: 'popup.html',
     default_icon: 'images/icon_1000.png'
   },
@@ -59,5 +59,5 @@ export default {
       matches: ['<all_urls>']
     }
   ],
-  homepage_url: 'https://vivswan.github.io/polly-for-chrome/'
+  homepage_url: 'https://vivswan.github.io/azure-speech-for-chrome/'
 }
