@@ -1,6 +1,6 @@
 # Azure Speech For Chrome
 
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kdcbeehimalgmeoeajnflggejlemclnn.svg)](https://chromewebstore.google.com/detail/kdcbeehimalgmeoeajnflggejlemclnn)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/dkkdafmbplibmfajcdlfpicngpnkaloc.svg)](https://chromewebstore.google.com/detail/dkkdafmbplibmfajcdlfpicngpnkaloc)
 [![GitHub Pages](https://img.shields.io/badge/website-azure--speech--for--chrome-blue)](https://vivswan.github.io/azure-speech-for-chrome/)
 [![GitHub](https://img.shields.io/github/license/vivswan/azure-speech-for-chrome)](LICENSE)
 
@@ -9,7 +9,7 @@ Speech Services' advanced AI voices. Support for 140+ languages and 400+ profess
 support.
 
 🌐 **[Visit Website](https://vivswan.github.io/azure-speech-for-chrome/)** | 🛒
-**[Chrome Web Store](https://chromewebstore.google.com/detail/kdcbeehimalgmeoeajnflggejlemclnn)**
+**[Chrome Web Store](https://chromewebstore.google.com/detail/dkkdafmbplibmfajcdlfpicngpnkaloc)**
 
 ## ✨ Key Features
 
@@ -25,7 +25,7 @@ support.
 ## 🚀 Quick Start
 
 1. **Install Extension**: Add
-   from [Chrome Web Store](https://chromewebstore.google.com/detail/kdcbeehimalgmeoeajnflggejlemclnn)
+   from [Chrome Web Store](https://chromewebstore.google.com/detail/dkkdafmbplibmfajcdlfpicngpnkaloc)
 2. **Setup Azure**: Create Azure account and configure Speech Services
    ([detailed guide](https://vivswan.github.io/azure-speech-for-chrome/#install))
 3. **Start Converting**: Highlight any text, right-click, and choose your preferred speed
@@ -128,7 +128,7 @@ the [MIT License](LICENSE).
 ## 🔗 Links
 
 - **Website**: [https://vivswan.github.io/azure-speech-for-chrome/](https://vivswan.github.io/azure-speech-for-chrome/)
-- **Chrome Web Store**: [Install Extension](https://chromewebstore.google.com/detail/kdcbeehimalgmeoeajnflggejlemclnn)
+- **Chrome Web Store**: [Install Extension](https://chromewebstore.google.com/detail/dkkdafmbplibmfajcdlfpicngpnkaloc)
 - **Issues**: [Report Bugs](https://github.com/vivswan/azure-speech-for-chrome/issues)
 - **Azure Speech Docs**: [Documentation](https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/)
 
