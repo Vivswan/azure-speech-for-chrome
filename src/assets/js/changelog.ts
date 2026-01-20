@@ -21,7 +21,7 @@ const versions: Version[] = [
   {
     version: '1.0.0',
     type: 'major',
-    title: '🎉 Initial Release',
+    title: 'Initial Release',
     changes: [
       {
         type: 'feature',
@@ -139,17 +139,17 @@ function getTypeStyle(type: string): string {
 function getChangeIcon(type: string): string {
   switch (type) {
     case 'feature':
-      return '✨'
+      return '[NEW]'
     case 'improvement':
-      return '🔧'
+      return '[IMP]'
     case 'fix':
-      return '🐛'
+      return '[FIX]'
     case 'security':
-      return '🛡️'
+      return '[SEC]'
     case 'breaking':
-      return '⚠️'
+      return '[BRK]'
     default:
-      return '📝'
+      return '[CHG]'
   }
 }
 

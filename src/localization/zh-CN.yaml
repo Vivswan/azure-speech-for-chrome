@@ -123,14 +123,14 @@ help:
   title: "帮助指南"
 
   getting_started:
-    title: "🚀 开始使用"
+    title: "开始使用"
     description: "Azure Speech for Chrome 使用 Azure Speech Services 将高亮文本转换为自然语音。开始使用前，您需要设置 Azure 凭证。"
-    prerequisites: "💡 前提条件"
+    prerequisites: "前提条件"
     azure_account: "Azure 账户（有免费套餐）"
     resource_understanding: "对 Azure 资源的基本了解（我们会指导您）"
 
   azure_setup:
-    title: "🔑 设置 Azure 凭证"
+    title: "设置 Azure 凭证"
     create_account:
       title: "创建 Azure 账户"
       description: "如果您还没有 Azure 账户："
@@ -158,7 +158,7 @@ help:
       step2: "点击左侧菜单中的「密钥和终结点」"
       step3: "复制「密钥 1」或「密钥 2」（任一都可用）"
       step4: "记下「位置/区域」值"
-      security_warning: "⚠️ 安全警告"
+      security_warning: "安全警告"
       security_text: "请妥善保管您的订阅密钥，切勿公开分享。如果密钥泄露，您可以重新生成。"
 
     choose_region:
@@ -173,7 +173,7 @@ help:
       see_docs: "查看 Azure Speech 区域完整列表"
 
   extension_setup:
-    title: "⚙️ 配置扩展"
+    title: "配置扩展"
     enter_credentials:
       title: "输入您的凭证"
       step1: "点击浏览器中的 Azure Speech 扩展图标"
@@ -193,9 +193,9 @@ help:
       volume: "音量：控制音频音量（-16dB 到 +16dB）"
 
   usage:
-    title: "📖 使用方法"
+    title: "使用方法"
     context_menu:
-      title: "🖱️ 使用右键菜单"
+      title: "使用右键菜单"
       step1: "在网页上高亮任何文本"
       step2: "右键点击选中的文本"
       step3: "从多个选项中选择："
@@ -206,14 +206,14 @@ help:
       download_mp3: "下载 MP3 - 保存音频文件"
 
     keyboard_shortcuts:
-      title: "⌨️ 使用键盘快捷键"
+      title: "使用键盘快捷键"
       read_aloud_shortcut: "朗读"
       download_shortcut: "下载"
       mac_note: "在 Mac 上：使用 Cmd 代替 Ctrl"
       customize_note: "在设置选项卡中自定义快捷键"
 
     pro_tips:
-      title: "✨ 专业提示"
+      title: "专业提示"
       tip1: "适用于任何网站上的任何文本，包括 HTML 内容"
       tip2: "直接从右键菜单选择播放速度（首选、1x、1.5x、2x）"
       tip3: "速度选项会临时覆盖您的全局速度设置"
@@ -223,9 +223,9 @@ help:
       tip7: "下载的文件保存为高质量 MP3"
 
   text_processing:
-    title: "🔄 文本处理与安全"
+    title: "文本处理与安全"
     smart_sanitization:
-      title: "🛡️ 智能文本清理"
+      title: "智能文本清理"
       description: "扩展使用 sanitize-html 库自动处理选中的文本，确保安全准确的语音合成："
       html_removal: "HTML 标签移除：去除 HTML 标记，同时保留可读内容"
       special_chars: "特殊字符处理：为 SSML 兼容性安全转义 XML 字符（<、>、&）"
@@ -234,7 +234,7 @@ help:
       ssml_preservation: "SSML 保留：为高级用户保留有效的 SSML 标记不变"
 
     examples:
-      title: "💡 示例"
+      title: "示例"
       html_content: "HTML 内容："
       html_example: "<p>Hello <strong>world</strong>!</p>"
       html_result: "→ 变成：\"Hello world !\""
@@ -243,7 +243,7 @@ help:
       special_result: "→ 为语音合成安全转义"
 
     what_to_select:
-      title: "🎯 您可以选择什么"
+      title: "您可以选择什么"
       plain_text: "任何网页上的纯文本"
       html_text: "带有 HTML 格式的文本（自动清理）"
       special_chars: "包含特殊字符和符号的内容"
@@ -252,19 +252,19 @@ help:
       mixed_content: "来自复杂网页的混合内容"
 
   audio_features:
-    title: "🎵 音频功能"
+    title: "音频功能"
     download_formats:
-      title: "📥 下载格式"
+      title: "下载格式"
       mp3_64: "MP3 (64kbps)：推荐质量"
       mp3_32: "MP3 (32kbps)：更小文件大小"
 
     playback_formats:
-      title: "🔊 播放格式"
+      title: "播放格式"
       ogg: "OGG：最佳压缩（推荐）"
       mp3: "MP3：通用兼容性"
 
     ssml_support:
-      title: "🎯 SSML 支持"
+      title: "SSML 支持"
       description: "使用语音合成标记语言进行高级控制："
       example_hello: "你好"
       example_world: "世界"
@@ -272,9 +272,9 @@ help:
       learn_more: "了解更多：Azure SSML 文档"
 
   pricing:
-    title: "💰 定价与使用"
+    title: "定价与使用"
     free_tier:
-      title: "💝 Azure 免费套餐"
+      title: "Azure 免费套餐"
       description: "Azure Speech Services 神经网络语音每月包含 50 万字符免费。"
 
     neural_voices:
@@ -284,7 +284,7 @@ help:
       description: "高质量，自然音效"
 
     cost_optimization:
-      title: "💡 成本优化"
+      title: "成本优化"
       tip1: "在 Azure 门户中监控使用情况"
       tip2: "设置账单警报"
       tip3: "个人项目使用免费套餐"
@@ -293,48 +293,48 @@ help:
     current_pricing: "当前定价：Azure Speech 定价"
 
   troubleshooting:
-    title: "🔧 故障排除"
+    title: "故障排除"
     credentials_invalid:
-      problem: "❌ 'Azure 凭证缺失或无效'"
+      problem: "'Azure 凭证缺失或无效'"
       solution1: "仔细检查您的订阅密钥"
       solution2: "确保您的区域正确（例如：eastus、westus2）"
       solution3: "验证您的语音资源在 Azure 门户中处于活动状态"
       solution4: "检查您的订阅是否有可用配额"
 
     no_audio:
-      problem: "🔇 没有音频播放"
+      problem: "没有音频播放"
       solution1: "检查您浏览器的音频设置"
       solution2: "确保浏览器标签页有音频权限"
       solution3: "尝试不同的音频格式（OGG → MP3）"
       solution4: "检查其他音频在您的浏览器中是否正常工作"
 
     access_denied:
-      problem: "🚫 '访问被拒绝' 错误"
+      problem: "'访问被拒绝' 错误"
       solution1: "验证您的订阅密钥是否正确"
       solution2: "检查语音服务在您选择的区域是否可用"
       solution3: "验证您的 Azure 订阅状态良好"
       solution4: "确保您没有超过服务配额"
 
     unexpected_charges:
-      problem: "💸 意外费用"
+      problem: "意外费用"
       solution1: "在 Azure 门户 → 语音资源 → 指标中监控使用情况"
       solution2: "在 Azure 成本管理中设置成本警报"
       solution3: "每个字符（包括空格）都计入使用量"
       solution4: "考虑使用免费套餐（每月 50 万字符）"
 
   support:
-    title: "🆘 获取帮助"
+    title: "获取帮助"
     extension_issues:
       title: "扩展问题"
-      report_bugs: "🐛 在 GitHub 上报告错误"
-      view_source: "📖 查看源代码"
-      privacy_policy: "🔒 隐私政策"
+      report_bugs: "在 GitHub 上报告错误"
+      view_source: "查看源代码"
+      privacy_policy: "隐私政策"
 
     azure_support:
       title: "Azure 支持"
-      documentation: "📚 Azure Speech 文档"
-      support_center: "💬 Azure 支持中心"
+      documentation: "Azure Speech 文档"
+      support_center: "Azure 支持中心"
 
     community:
-      title: "🤝 社区"
+      title: "社区"
       description: "在我们的 GitHub 社区中加入讨论、分享技巧并从其他用户那里获得帮助。"

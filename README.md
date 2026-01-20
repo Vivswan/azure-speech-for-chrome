@@ -8,21 +8,21 @@ A premium Chrome extension that transforms any text on the web into high-quality
 Speech Services' advanced AI voices. Support for 140+ languages and 400+ professional voices with multilingual interface
 support.
 
-🌐 **[Visit Website](https://vivswan.github.io/azure-speech-for-chrome/)** | 🛒
+**[Visit Website](https://vivswan.github.io/azure-speech-for-chrome/)** |
 **[Chrome Web Store](https://chromewebstore.google.com/detail/dkkdafmbplibmfajcdlfpicngpnkaloc)**
 
-## ✨ Key Features
+## Key Features
 
-* **🎵 140+ Languages & 400+ Voices** - Choose from Neural voice engines with natural-sounding AI voices
-* **🌍 Multi-Language Interface** - Available in English, Chinese (Simplified & Traditional), and Hindi
-* **⚡ Multiple Speed Options** - Context menu with 1x, 1.5x, and 2x playback speeds
-* **🛡️ Smart Text Processing** - Automatically sanitizes HTML content using sanitize-html library
-* **⌨️ Keyboard Shortcuts** - Quick access with Ctrl+Shift+S (read aloud) and Ctrl+Shift+E (download)
-* **💾 Audio Downloads** - Save as high-quality MP3 files for offline use
-* **🔧 SSML Support** - Advanced markup for precise speech control
-* **🔒 Secure & Private** - Your Azure credentials stay local and private
+* **140+ Languages & 400+ Voices** - Choose from Neural voice engines with natural-sounding AI voices
+* **Multi-Language Interface** - Available in English, Chinese (Simplified & Traditional), and Hindi
+* **Multiple Speed Options** - Context menu with 1x, 1.5x, and 2x playback speeds
+* **Smart Text Processing** - Automatically sanitizes HTML content using sanitize-html library
+* **Keyboard Shortcuts** - Quick access with Ctrl+Shift+S (read aloud) and Ctrl+Shift+E (download)
+* **Audio Downloads** - Save as high-quality MP3 files for offline use
+* **SSML Support** - Advanced markup for precise speech control
+* **Secure & Private** - Your Azure credentials stay local and private
 
-## 🚀 Quick Start
+## Quick Start
 
 1. **Install Extension**: Add
    from [Chrome Web Store](https://chromewebstore.google.com/detail/dkkdafmbplibmfajcdlfpicngpnkaloc)
@@ -30,7 +30,7 @@ support.
    ([detailed guide](https://vivswan.github.io/azure-speech-for-chrome/#install))
 3. **Start Converting**: Highlight any text, right-click, and choose your preferred speed
 
-## 💰 Pricing
+## Pricing
 
 - **Extension**: Completely FREE
 - **Azure Free Tier**: 500,000 characters per month free for neural voices
@@ -38,7 +38,7 @@ support.
 
 [View detailed pricing →](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/)
 
-## 🔧 Azure Setup
+## Azure Setup
 
 ### Quick Setup
 
@@ -49,7 +49,7 @@ support.
 
 For detailed setup instructions with screenshots, visit our [help guide](https://vivswan.github.io/azure-speech-for-chrome/).
 
-## 🛠️ Development
+## Development
 
 ### Extension Development
 
@@ -77,7 +77,7 @@ Website files are generated in the `public` folder.
 - `npm run typecheck` - Run TypeScript type checking
 - `npm run validate-translations` - Validate translation files consistency
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── src/
@@ -101,7 +101,7 @@ Website files are generated in the `public` folder.
 └── .github/workflows/      # GitHub Actions
 ```
 
-## 🌐 Website
+## Website
 
 The project includes a marketing website built with React and Tailwind CSS:
 
@@ -109,7 +109,7 @@ The project includes a marketing website built with React and Tailwind CSS:
 - **Auto-deployed** via GitHub Actions on every push to main
 - **Build command**: `npm run build`
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to
 discuss what you would like to change.
@@ -120,12 +120,12 @@ discuss what you would like to change.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is based on [Wavenet for Chrome](https://github.com/pgmichael/wavenet-for-chrome) and licensed under
 the [MIT License](LICENSE).
 
-## 🔗 Links
+## Links
 
 - **Website**: [https://vivswan.github.io/azure-speech-for-chrome/](https://vivswan.github.io/azure-speech-for-chrome/)
 - **Chrome Web Store**: [Install Extension](https://chromewebstore.google.com/detail/dkkdafmbplibmfajcdlfpicngpnkaloc)
@@ -134,4 +134,4 @@ the [MIT License](LICENSE).
 
 ---
 
-⭐ **Star this repository if you find it helpful!**
+**Star this repository if you find it helpful!**
