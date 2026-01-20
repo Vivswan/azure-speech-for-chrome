@@ -123,14 +123,14 @@ help:
   title: "Help Guide"
 
   getting_started:
-    title: "🚀 Getting Started"
+    title: "Getting Started"
     description: "Azure Speech for Chrome converts highlighted text into natural-sounding speech using Azure Speech Services. To get started, you'll need to set up Azure credentials."
-    prerequisites: "💡 Prerequisites"
+    prerequisites: "Prerequisites"
     azure_account: "An Azure account (free tier available)"
     resource_understanding: "Basic understanding of Azure resources (we'll guide you)"
 
   azure_setup:
-    title: "🔑 Setting Up Azure Credentials"
+    title: "Setting Up Azure Credentials"
     create_account:
       title: "Create an Azure Account"
       description: "If you don't have an Azure account:"
@@ -158,7 +158,7 @@ help:
       step2: "Click \"Keys and Endpoint\" in the left menu"
       step3: "Copy \"KEY 1\" or \"KEY 2\" (either will work)"
       step4: "Note the \"Location/Region\" value"
-      security_warning: "⚠️ Security Warning"
+      security_warning: "Security Warning"
       security_text: "Keep your subscription key secure and never share it publicly. You can regenerate keys if they are compromised."
 
     choose_region:
@@ -173,7 +173,7 @@ help:
       see_docs: "See Azure Speech regions for complete list"
 
   extension_setup:
-    title: "⚙️ Configuring the Extension"
+    title: "Configuring the Extension"
     enter_credentials:
       title: "Enter Your Credentials"
       step1: "Click the Azure Speech extension icon in your browser"
@@ -193,9 +193,9 @@ help:
       volume: "Volume: Control audio volume (-16dB to +16dB)"
 
   usage:
-    title: "📖 How to Use"
+    title: "How to Use"
     context_menu:
-      title: "🖱️ Using Context Menu"
+      title: "Using Context Menu"
       step1: "Highlight any text on a webpage"
       step2: "Right-click on the selected text"
       step3: "Choose from multiple options:"
@@ -206,14 +206,14 @@ help:
       download_mp3: "Download MP3 - Save audio file"
 
     keyboard_shortcuts:
-      title: "⌨️ Using Keyboard Shortcuts"
+      title: "Using Keyboard Shortcuts"
       read_aloud_shortcut: "Read aloud"
       download_shortcut: "Download"
       mac_note: "On Mac: Use Cmd instead of Ctrl"
       customize_note: "Customize shortcuts in Settings tab"
 
     pro_tips:
-      title: "✨ Pro Tips"
+      title: "Pro Tips"
       tip1: "Works with any text on any website, including HTML content"
       tip2: "Choose playback speed directly from context menu (preferred, 1x, 1.5x, 2x)"
       tip3: "Speed options override your global speed setting temporarily"
@@ -223,9 +223,9 @@ help:
       tip7: "Downloaded files are saved as high-quality MP3"
 
   text_processing:
-    title: "🔄 Text Processing & Safety"
+    title: "Text Processing & Safety"
     smart_sanitization:
-      title: "🛡️ Smart Text Sanitization"
+      title: "Smart Text Sanitization"
       description: "The extension uses sanitize-html library to automatically process selected text for safe and accurate speech synthesis:"
       html_removal: "HTML Tag Removal: Strips HTML markup while preserving readable content"
       special_chars: "Special Character Handling: Safely escapes XML characters (<, >, &) for SSML compatibility"
@@ -234,7 +234,7 @@ help:
       ssml_preservation: "SSML Preservation: Leaves valid SSML markup unchanged for advanced users"
 
     examples:
-      title: "💡 Examples"
+      title: "Examples"
       html_content: "HTML Content:"
       html_example: "<p>Hello <strong>world</strong>!</p>"
       html_result: "→ Becomes: \"Hello world !\""
@@ -243,7 +243,7 @@ help:
       special_result: "→ Safely escaped for speech synthesis"
 
     what_to_select:
-      title: "🎯 What You Can Select"
+      title: "What You Can Select"
       plain_text: "Plain text from any webpage"
       html_text: "Text with HTML formatting (automatically cleaned)"
       special_chars: "Content with special characters and symbols"
@@ -252,19 +252,19 @@ help:
       mixed_content: "Mixed content from complex web pages"
 
   audio_features:
-    title: "🎵 Audio Features"
+    title: "Audio Features"
     download_formats:
-      title: "📥 Download Formats"
+      title: "Download Formats"
       mp3_64: "MP3 (64kbps): Recommended quality"
       mp3_32: "MP3 (32kbps): Smaller file size"
 
     playback_formats:
-      title: "🔊 Playback Formats"
+      title: "Playback Formats"
       ogg: "OGG: Best compression (recommended)"
       mp3: "MP3: Universal compatibility"
 
     ssml_support:
-      title: "🎯 SSML Support"
+      title: "SSML Support"
       description: "Use Speech Synthesis Markup Language for advanced control:"
       example_hello: "Hello"
       example_world: "world"
@@ -272,9 +272,9 @@ help:
       learn_more: "Learn more: Azure SSML Documentation"
 
   pricing:
-    title: "💰 Pricing & Usage"
+    title: "Pricing & Usage"
     free_tier:
-      title: "💝 Azure Free Tier"
+      title: "Azure Free Tier"
       description: "Azure Speech Services includes 500,000 characters per month free for neural voices."
 
     neural_voices:
@@ -284,7 +284,7 @@ help:
       description: "High quality, natural sounding"
 
     cost_optimization:
-      title: "💡 Cost Optimization"
+      title: "Cost Optimization"
       tip1: "Monitor usage in Azure Portal"
       tip2: "Set up billing alerts"
       tip3: "Use the free tier for personal projects"
@@ -293,48 +293,48 @@ help:
     current_pricing: "Current pricing: Azure Speech Pricing"
 
   troubleshooting:
-    title: "🔧 Troubleshooting"
+    title: "Troubleshooting"
     credentials_invalid:
-      problem: "❌ 'Azure credentials are missing or invalid'"
+      problem: "'Azure credentials are missing or invalid'"
       solution1: "Double-check your Subscription Key"
       solution2: "Ensure your region is correct (e.g., eastus, westus2)"
       solution3: "Verify your Speech resource is active in Azure Portal"
       solution4: "Check if your subscription has available quota"
 
     no_audio:
-      problem: "🔇 No audio plays"
+      problem: "No audio plays"
       solution1: "Check your browser's audio settings"
       solution2: "Ensure the browser tab has audio permission"
       solution3: "Try a different audio format (OGG → MP3)"
       solution4: "Check if other audio works in your browser"
 
     access_denied:
-      problem: "🚫 'Access Denied' errors"
+      problem: "'Access Denied' errors"
       solution1: "Verify your subscription key is correct"
       solution2: "Check if the Speech service is available in your selected region"
       solution3: "Verify your Azure subscription is in good standing"
       solution4: "Ensure you haven't exceeded service quotas"
 
     unexpected_charges:
-      problem: "💸 Unexpected charges"
+      problem: "Unexpected charges"
       solution1: "Monitor usage in Azure Portal → Speech resource → Metrics"
       solution2: "Set up cost alerts in Azure Cost Management"
       solution3: "Each character (including spaces) counts toward usage"
       solution4: "Consider using the free tier (500K chars/month)"
 
   support:
-    title: "🆘 Getting Help"
+    title: "Getting Help"
     extension_issues:
       title: "Extension Issues"
-      report_bugs: "🐛 Report bugs on GitHub"
-      view_source: "📖 View source code"
-      privacy_policy: "🔒 Privacy Policy"
+      report_bugs: "Report bugs on GitHub"
+      view_source: "View source code"
+      privacy_policy: "Privacy Policy"
 
     azure_support:
       title: "Azure Support"
-      documentation: "📚 Azure Speech Documentation"
-      support_center: "💬 Azure Support Center"
+      documentation: "Azure Speech Documentation"
+      support_center: "Azure Support Center"
 
     community:
-      title: "🤝 Community"
+      title: "Community"
       description: "Join discussions, share tips, and get help from other users in our GitHub community."
