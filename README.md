@@ -51,11 +51,19 @@ For detailed setup instructions with screenshots, visit our [help guide](https:/
 
 ## Development
 
+### Prerequisites
+
+This project uses [Bun](https://bun.sh) as the package manager and runtime. Install it with:
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
 ### Extension Development
 
 ```bash
-npm install
-npm run build
+bun install
+bun run build
 ```
 
 Load the unpacked extension from the `dist` folder.
@@ -63,19 +71,40 @@ Load the unpacked extension from the `dist` folder.
 ### Website Development
 
 ```bash
-npm install
-npm run build
+bun install
+bun run build
 ```
 
 Website files are generated in the `public` folder.
 
 ### Available Scripts
 
-- `npm run build` - Build Chrome extension and website
-- `npm run dev` - Development mode with file watching
-- `npm run lint` - Run ESLint
-- `npm run typecheck` - Run TypeScript type checking
-- `npm run validate-translations` - Validate translation files consistency
+- `bun run build` - Build Chrome extension and website
+- `bun run dev` - Development mode with file watching
+- `bun run lint` - Run ESLint
+- `bun run typecheck` - Run TypeScript type checking
+- `bun run test` - Run tests
+- `bun run validate-translations` - Validate translation files consistency
+- `bun run generate-icons` - Generate extension icons
+- `bun run bump-version` - Bump version number
+
+### Code Quality
+
+This project uses automated code quality checks:
+
+- **Pre-commit hooks** (via Husky): Automatically runs formatting, linting, and tests before each commit
+- **Prettier**: Code formatting
+- **ESLint**: Code linting
+- **lint-staged**: Runs formatters on staged files only
+
+### CI/CD Workflows
+
+The project includes several GitHub Actions workflows:
+
+- **CI** (`ci.yml`): Runs tests and format checks on every push and PR
+- **Auto Format** (`auto-format.yml`): Automatically formats code when PR has 'fix-lint' label
+- **Deploy** (`deploy.yml`): Builds and releases extension on push to deploy branch
+- **Auto Assign** (`auto-assign.yml`): Automatically assigns issues and PRs to repository owner
 
 ## Project Structure
 
