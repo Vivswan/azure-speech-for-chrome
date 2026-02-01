@@ -112,6 +112,7 @@ describe("translation", () => {
 		it("should warn when setting invalid locale", () => {
 			const { result } = renderHook(() => useTranslation());
 			const originalWarn = console.warn;
+			const currentLocale = result.current.locale; // Capture current locale
 			let warnMessage = "";
 			console.warn = (msg: string) => {
 				warnMessage = msg;
@@ -122,7 +123,7 @@ describe("translation", () => {
 			});
 
 			expect(warnMessage).toContain("not available");
-			expect(result.current.locale).toBe("en"); // Should remain unchanged
+			expect(result.current.locale).toBe(currentLocale); // Should remain unchanged
 
 			console.warn = originalWarn;
 		});
