@@ -7,13 +7,14 @@ import { getAudioUri } from "./synthesis";
 export async function download({ text }: { text: string }): Promise<boolean> {
 	console.log("Downloading audio...", ...arguments);
 
-	const { downloadEncoding: encoding } = await chrome.storage.sync.get();
+	const { downloadEncoding } = await chrome.storage.sync.get();
+	const encoding = downloadEncoding as string;
 	const url = await getAudioUri({ text, encoding });
 
 	console.log("Downloading audio from", url);
 	chrome.downloads.download({
 		url,
-		filename: `tts-download.${fileExtMap[encoding]}`,
+		filename: `tts-download.${fileExtMap[encoding as keyof typeof fileExtMap]}`,
 	});
 
 	return Promise.resolve(true);

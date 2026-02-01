@@ -10,8 +10,8 @@ export async function updateContextMenus(): Promise<void> {
 	await bootstrapped;
 
 	const commands = await chrome.commands.getAll();
-	const encoding = (await chrome.storage.sync.get()).downloadEncoding;
-	const fileExt = fileExtMap[encoding];
+	const encoding = (await chrome.storage.sync.get()).downloadEncoding as string;
+	const fileExt = fileExtMap[encoding as keyof typeof fileExtMap];
 	const downloadShortcut = commands.find((c) => c.name === "downloadShortcut")?.shortcut;
 
 	chrome.contextMenus.update("readAloud", {
@@ -46,8 +46,8 @@ export async function createContextMenus(): Promise<void> {
 	const commands = await chrome.commands.getAll();
 	const readAloudShortcut = commands.find((c) => c.name === "readAloudShortcut")?.shortcut;
 	const downloadShortcut = commands.find((c) => c.name === "downloadShortcut")?.shortcut;
-	const downloadEncoding = (await chrome.storage.sync.get()).downloadEncoding;
-	const fileExt = fileExtMap[downloadEncoding];
+	const downloadEncoding = (await chrome.storage.sync.get()).downloadEncoding as string;
+	const fileExt = fileExtMap[downloadEncoding as keyof typeof fileExtMap];
 
 	chrome.contextMenus.create({
 		id: "readAloud",
