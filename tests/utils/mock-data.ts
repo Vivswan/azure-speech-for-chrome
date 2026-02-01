@@ -1,17 +1,21 @@
-import type { SyncStorage, SessionStorage } from "@/types/storage";
+import type { SyncStorage, SessionStorage } from "@/types";
 
 /**
  * Mock sync storage data
  */
 export const mockSyncStorage: SyncStorage = {
-	key: "mock-subscription-key",
+	subscriptionKey: "mock-subscription-key",
 	region: "eastus",
-	voice: "en-US-JennyNeural",
+	voices: { "en-US": "en-US-JennyNeural" },
 	pitch: 0,
-	rate: 1.0,
-	selectedInputFormat: "auto",
+	speed: 1.0,
+	readAloudEncoding: "mp3-24khz-48kbitrate-mono",
+	downloadEncoding: "mp3-24khz-48kbitrate-mono",
 	language: "en-US",
-	ssml: false,
+	audioProfile: "",
+	volumeGainDb: 0,
+	credentialsValid: true,
+	engine: "azure",
 };
 
 /**
@@ -20,42 +24,23 @@ export const mockSyncStorage: SyncStorage = {
 export const mockSessionStorage: Partial<SessionStorage> = {
 	voices: [
 		{
-			Name: "en-US-JennyNeural",
-			DisplayName: "Jenny",
-			LocalName: "Jenny",
-			ShortName: "en-US-JennyNeural",
-			Gender: "Female",
-			Locale: "en-US",
-			LocaleName: "English (United States)",
-			SampleRateHertz: "24000",
-			VoiceType: "Neural",
-			Status: "GA",
-			WordsPerMinute: "150",
-		},
-		{
-			Name: "en-US-GuyNeural",
-			DisplayName: "Guy",
-			LocalName: "Guy",
-			ShortName: "en-US-GuyNeural",
-			Gender: "Male",
-			Locale: "en-US",
-			LocaleName: "English (United States)",
-			SampleRateHertz: "24000",
-			VoiceType: "Neural",
-			Status: "GA",
-			WordsPerMinute: "150",
-		},
-	],
-	languages: [
-		{
+			name: "en-US-JennyNeural",
+			shortName: "en-US-JennyNeural",
 			locale: "en-US",
-			name: "English (United States)",
+			localName: "Jenny",
+			gender: "Female",
+			voiceType: "Neural",
 		},
 		{
-			locale: "es-ES",
-			name: "Spanish (Spain)",
+			name: "en-US-GuyNeural",
+			shortName: "en-US-GuyNeural",
+			locale: "en-US",
+			localName: "Guy",
+			gender: "Male",
+			voiceType: "Neural",
 		},
 	],
+	languages: ["en-US", "es-ES"],
 };
 
 /**

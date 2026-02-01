@@ -237,7 +237,7 @@ help:
       title: "示例"
       html_content: "HTML 内容："
       html_example: "<p>Hello <strong>world</strong>!</p>"
-      html_result: "→ 变成：\"Hello world !\""
+      html_result: '→ 变成："Hello world !"'
       special_content: "特殊字符："
       special_example: "Price: $5 < $10 & cost > $1"
       special_result: "→ 为语音合成安全转义"

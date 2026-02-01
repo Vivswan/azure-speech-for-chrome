@@ -149,12 +149,12 @@ vi.mock("wink-eng-lite-web-model", () => ({
 }));
 
 // Mock Service Worker clients API
-global.clients = {
+(global as any).clients = {
 	matchAll: vi.fn(() => Promise.resolve([])),
 	openWindow: vi.fn(),
 	claim: vi.fn(),
 	get: vi.fn(),
-} as any;
+};
 
 // Mock browser APIs
 global.matchMedia = vi.fn((query) => ({

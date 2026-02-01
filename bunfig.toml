@@ -16,7 +16,7 @@ auto = true
 
 [install.cache]
 # Cache directory for packages
-dir = "~/.bun/install/cache"
+enabled = true
 
 [test]
 # Test configuration

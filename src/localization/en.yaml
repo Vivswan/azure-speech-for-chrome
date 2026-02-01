@@ -135,7 +135,7 @@ help:
       title: "Create an Azure Account"
       description: "If you don't have an Azure account:"
       step1: "Go to azure.microsoft.com"
-      step2: "Click \"Start free\" or \"Sign in\""
+      step2: 'Click "Start free" or "Sign in"'
       step3: "Follow the registration process"
       step4: "Add a payment method (free tier covers basic usage)"
 
@@ -143,21 +143,21 @@ help:
       title: "Create a Speech Resource"
       description: "Create a Speech Services resource in Azure:"
       step1: "Sign in to Azure Portal"
-      step2: "Click \"Create a resource\""
-      step3: "Search for \"Speech\" and check Azure services only and select Speech by Microsoft"
-      step4: "Click \"Create\""
+      step2: 'Click "Create a resource"'
+      step3: 'Search for "Speech" and check Azure services only and select Speech by Microsoft'
+      step4: 'Click "Create"'
       step5: "Choose your subscription and resource group"
-      step6: "Select a region (e.g., \"East US\")"
+      step6: 'Select a region (e.g., "East US")'
       step7: "Choose the Free (F0) or Standard (S0) pricing tier"
-      step8: "Click \"Review + create\" then \"Create\""
+      step8: 'Click "Review + create" then "Create"'
 
     get_keys:
       title: "Get Your Subscription Key"
       description: "Get the subscription key for your Speech resource:"
       step1: "Go to your Speech resource in Azure Portal"
-      step2: "Click \"Keys and Endpoint\" in the left menu"
-      step3: "Copy \"KEY 1\" or \"KEY 2\" (either will work)"
-      step4: "Note the \"Location/Region\" value"
+      step2: 'Click "Keys and Endpoint" in the left menu'
+      step3: 'Copy "KEY 1" or "KEY 2" (either will work)'
+      step4: 'Note the "Location/Region" value'
       security_warning: "Security Warning"
       security_text: "Keep your subscription key secure and never share it publicly. You can regenerate keys if they are compromised."
 
@@ -237,7 +237,7 @@ help:
       title: "Examples"
       html_content: "HTML Content:"
       html_example: "<p>Hello <strong>world</strong>!</p>"
-      html_result: "→ Becomes: \"Hello world !\""
+      html_result: '→ Becomes: "Hello world !"'
       special_content: "Special Characters:"
       special_example: "Price: $5 < $10 & cost > $1"
       special_result: "→ Safely escaped for speech synthesis"
