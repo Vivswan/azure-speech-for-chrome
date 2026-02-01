@@ -4,14 +4,26 @@
   "description": "A wrapper for Azure Speech Services that transforms highlighted text into high-quality natural sounding audio.",
   "main": "index.js",
   "type": "module",
+  "packageManager": "bun@1.2.10",
   "scripts": {
-    "build": "node scripts/validate-translations.cjs && bun scripts/bun.config.js",
+    "build": "bun scripts/validate-translations.cjs && bun scripts/bun.config.js",
     "dev": "bun scripts/bun.config.js --watch",
-    "lint": "npx eslint .",
+    "lint": "bunx eslint .",
     "typecheck": "tsc --noEmit",
-    "generate-icons": "node scripts/generate-icons.js",
-    "bump-version": "node scripts/bump-version.js",
-    "validate-translations": "node scripts/validate-translations.cjs"
+    "test": "bun test",
+    "generate-icons": "bun scripts/generate-icons.js",
+    "bump-version": "bun scripts/bump-version.js",
+    "validate-translations": "bun scripts/validate-translations.cjs",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,cjs}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
   },
   "author": "Vivswan Shah",
   "license": "MIT",
@@ -32,8 +44,11 @@
     "crx": "^5.0.1",
     "esbuild-plugin-babel": "^0.2.3",
     "eslint": "^9.28.0",
+    "husky": "^9.1.7",
     "js-yaml": "^4.1.0",
+    "lint-staged": "^16.2.7",
     "postcss": "^8.5.4",
+    "prettier": "^3.8.1",
     "sharp": "^0.34.1",
     "tailwindcss": "~3.2.7",
     "typescript": "^5.2.2",

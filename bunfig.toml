@@ -1,0 +1,35 @@
+# Bun configuration file
+# https://bun.sh/docs/runtime/bunfig
+
+[install]
+# Install dependencies from lockfile, ensuring reproducible installs
+frozen-lockfile = true
+
+# Use exact versions for dependencies
+exact = false
+
+# Configure registry
+registry = "https://registry.npmjs.org"
+
+# Auto-install peer dependencies
+auto = true
+
+[install.cache]
+# Cache directory for packages
+dir = "~/.bun/install/cache"
+
+[test]
+# Test configuration
+coverage = true
+
+[run]
+# Automatically install dependencies when running scripts
+autoInstall = true
+
+# Shell to use for package.json scripts
+shell = "system"
+
+# Performance optimizations
+[loader]
+".js" = "jsx"
+".ts" = "tsx"
