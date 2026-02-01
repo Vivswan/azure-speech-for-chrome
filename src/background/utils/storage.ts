@@ -44,7 +44,7 @@ export async function migrateSyncStorage(): Promise<void> {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const newSync: any = {};
 	if (sync.locale) {
-		const oldVoiceParts = sync.locale.split("-");
+		const oldVoiceParts = (sync.locale as string).split("-");
 		newSync.language = [oldVoiceParts[0], oldVoiceParts[1]].join("-");
 		// Map old voice to Azure neural voice
 		newSync.voices = { [newSync.language]: "en-US-JennyNeural" };
