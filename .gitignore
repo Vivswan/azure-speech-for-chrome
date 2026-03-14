@@ -158,8 +158,9 @@ dist
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
+# macOS custom folder icon files can appear as "Icon\r" in listings
 Icon
+Icon?
 
 
 # Thumbnails
