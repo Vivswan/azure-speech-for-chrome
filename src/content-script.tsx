@@ -11,9 +11,14 @@ interface ErrorMessage {
 	icon?: string;
 }
 
+interface ContentScriptRequest {
+	id: "setError";
+	payload: ErrorMessage;
+}
+
 // Event listeners -------------------------------------------------------------
-window.addEventListener("load", function () {
-	console.log("load", ...arguments);
+window.addEventListener("load", (event) => {
+	console.log("load", event);
 
 	const root = document.createElement("div");
 	const shadowRoot = root.attachShadow({ mode: "open" });
@@ -48,17 +53,15 @@ window.addEventListener("load", function () {
 // React component -------------------------------------------------------------
 function ContentScript() {
 	const [error, setError] = React.useState<ErrorMessage | null>(null);
-	const handlers = { setError };
 
-	function handleMessages(request: any) {
-		console.log("Handling message...", ...arguments);
+	function handleMessages(request?: ContentScriptRequest) {
+		console.log("Handling message...", request);
 
 		if (!request) return;
 		const { id, payload } = request;
 
-		if (!(handlers as any)[id]) return;
-
-		(handlers as any)[id](payload);
+		if (id !== "setError") return;
+		setError(payload);
 	}
 
 	useMount(function () {
