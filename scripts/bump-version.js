@@ -3,17 +3,17 @@
 /**
  * Version Bumping Script
  *
- * This script handles version bumping for Foundation Fill extension.
+ * This script handles version bumping for Azure Speech for Chrome.
  * It updates the version in package.json and not in manifest.json.
  *
  * Usage:
- *   node bump-version.js [major|minor|patch|<specific-version>]
+ *   bun run bump-version -- [major|minor|patch|<specific-version>]
  *
  * Examples:
- *   node bump-version.js patch     # Increments patch version (0.1.0 -> 0.1.1)
- *   node bump-version.js minor     # Increments minor version (0.1.0 -> 0.2.0)
- *   node bump-version.js major     # Increments major version (0.1.0 -> 1.0.0)
- *   node bump-version.js 1.2.3     # Sets version to specific value 1.2.3
+ *   bun run bump-version -- patch     # Increments patch version (0.1.0 -> 0.1.1)
+ *   bun run bump-version -- minor     # Increments minor version (0.1.0 -> 0.2.0)
+ *   bun run bump-version -- major     # Increments major version (0.1.0 -> 1.0.0)
+ *   bun run bump-version -- 1.2.3     # Sets version to specific value 1.2.3
  */
 
 import fs from "fs";
