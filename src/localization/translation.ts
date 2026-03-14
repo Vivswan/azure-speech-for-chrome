@@ -6,6 +6,10 @@ import hiTranslations from "./hi.yaml";
 
 type TranslationKey = string;
 type TranslationParams = Record<string, string | number>;
+type TranslationValue = string | TranslationDictionary;
+interface TranslationDictionary {
+	[key: string]: TranslationValue;
+}
 
 interface TranslationContext {
 	t: (key: TranslationKey, params?: TranslationParams) => string;
@@ -18,19 +22,27 @@ const DEFAULT_LOCALE = "en";
 const STORAGE_KEY = "azure_speech_locale";
 
 // All translations pre-loaded
-const translations = {
+const translations: Record<string, TranslationDictionary> = {
 	en: enTranslations,
 	"zh-CN": zhCNTranslations,
 	"zh-TW": zhTWTranslations,
 	hi: hiTranslations,
 };
 
-const getStoredLocale = (): string => {
+const getStorage = (): globalThis.Storage | null => {
 	try {
-		return localStorage.getItem(STORAGE_KEY) || DEFAULT_LOCALE;
+		const storage = globalThis.localStorage;
+		if (!storage) return null;
+		if (typeof storage.getItem !== "function") return null;
+		if (typeof storage.setItem !== "function") return null;
+		return storage;
 	} catch {
-		return DEFAULT_LOCALE;
+		return null;
 	}
+};
+
+const getStoredLocale = (): string => {
+	return getStorage()?.getItem(STORAGE_KEY) || DEFAULT_LOCALE;
 };
 
 // Global state
@@ -43,9 +55,17 @@ const notifyAll = () => {
 	subscribers.forEach((fn) => fn());
 };
 
-const getValue = (obj: any, path: string): string => {
-	const result = path.split(".").reduce((o, k) => o?.[k], obj);
-	return typeof result === "string" ? result : path;
+const getValue = (obj: TranslationDictionary | undefined, path: string): string => {
+	let current: TranslationValue | undefined = obj;
+
+	for (const segment of path.split(".")) {
+		if (!current || typeof current === "string") {
+			return path;
+		}
+		current = current[segment];
+	}
+
+	return typeof current === "string" ? current : path;
 };
 
 const interpolate = (text: string, params?: TranslationParams): string => {
@@ -65,11 +85,7 @@ const translate = (key: TranslationKey, params?: TranslationParams): string => {
 };
 
 const setStoredLocale = (locale: string): void => {
-	try {
-		localStorage.setItem(STORAGE_KEY, locale);
-	} catch (error) {
-		console.warn("Failed to store locale:", error);
-	}
+	getStorage()?.setItem(STORAGE_KEY, locale);
 };
 
 export const getLanguageDisplayName = (code: string): string => {

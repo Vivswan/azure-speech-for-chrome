@@ -365,10 +365,15 @@ const languageLabels: { [key: string]: string } = {
 // Current language state
 let currentLanguage = "en";
 
+type TranslationValue = string | TranslationDictionary;
+interface TranslationDictionary {
+	[key: string]: TranslationValue;
+}
+
 // Get nested translation value
 function getTranslation(key: string, lang: string = currentLanguage): string {
 	const keys = key.split(".");
-	let value: any = translations[lang];
+	let value: TranslationValue | undefined = translations[lang] as TranslationDictionary | undefined;
 
 	for (const k of keys) {
 		if (value && typeof value === "object" && k in value) {

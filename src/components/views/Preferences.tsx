@@ -141,7 +141,7 @@ export function Preferences() {
 						value={sync.downloadEncoding}
 						options={downloadAudioFormats}
 						onChange={(downloadEncoding) => {
-							if (downloadAudioFormats.find((f: any) => f.value === downloadEncoding)) {
+							if (downloadAudioFormats.find((format) => format.value === downloadEncoding)) {
 								setSync({ ...sync, downloadEncoding });
 							}
 						}}
@@ -151,7 +151,7 @@ export function Preferences() {
 						value={sync.readAloudEncoding}
 						options={readingAudioFormats}
 						onChange={(readAloudEncoding) => {
-							if (readingAudioFormats.find((f: any) => f.value === readAloudEncoding)) {
+							if (readingAudioFormats.find((format) => format.value === readAloudEncoding)) {
 								setSync({ ...sync, readAloudEncoding });
 							}
 						}}
@@ -198,7 +198,7 @@ function getLanguageOptions(session: SessionStorage): LanguageOption[] {
 	});
 
 	const languageNames = session.languages
-		?.map((value) => {
+		.map((value) => {
 			try {
 				// Azure uses standard locale codes like 'en-US', 'zh-CN', etc.
 				let displayName;
@@ -247,15 +247,15 @@ function getLanguageOptions(session: SessionStorage): LanguageOption[] {
 				return { value, title, description: "Language variant" };
 			}
 		})
-		.filter(Boolean);
+		.filter((option) => Boolean(option));
 
-	const sortedLanguages = Array.from(languageNames).sort((a: any, b: any) => {
+	const sortedLanguages = Array.from(languageNames).sort((a, b) => {
 		if (a.title < b.title) return -1;
 		if (a.title > b.title) return 1;
 		return 0;
 	});
 
-	return sortedLanguages as LanguageOption[];
+	return sortedLanguages;
 }
 
 function getEngineOptions(session: SessionStorage, language: string): EngineOption[] {

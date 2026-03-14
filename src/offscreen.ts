@@ -2,15 +2,27 @@
 let audioElement = new Audio();
 let shouldPlay = false;
 
+interface PlayRequest {
+	id: "play";
+	payload: { audioUri: string };
+	offscreen: true;
+}
+
+interface StopRequest {
+	id: "stop";
+	offscreen: true;
+}
+
+type OffscreenRequest = PlayRequest | StopRequest;
+
 // Event listeners -------------------------------------------------------------
-chrome.runtime.onMessage.addListener(function (request: any, sender: any, sendResponse: any) {
+chrome.runtime.onMessage.addListener((request: OffscreenRequest | undefined, _sender, sendResponse) => {
 	if (!request) return;
 
-	const { id, payload, offscreen } = request;
-	if (!offscreen) return;
+	if (!request.offscreen) return;
 
-	if (!(handlers as any)[id]) return;
-	(handlers as any)[id](payload).then(sendResponse);
+	const action = request.id === "play" ? handlers.play(request.payload) : handlers.stop();
+	action.then(sendResponse);
 
 	return true;
 });
