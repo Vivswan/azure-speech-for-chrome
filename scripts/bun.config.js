@@ -56,7 +56,7 @@ const copyAssets = async () => {
 	// Process Tailwind CSS
 	const processTailwindCSS = async () => {
 		try {
-			const tailwind = (await import("tailwindcss")).default;
+			const tailwind = (await import("@tailwindcss/postcss")).default;
 			const postcss = (await import("postcss")).default;
 
 			const inputCSS = fs.readFileSync(path.join(rootDir, "src/assets/css/styles.css"), "utf8");

@@ -43,6 +43,9 @@ bun run test:ui
 # Linting
 bun run lint
 
+# Lint GitHub Actions workflows
+bun run lint:actions
+
 # Validate translation files
 bun run validate-translations
 
@@ -195,7 +198,10 @@ Text helpers (`src/helpers/text-helpers.ts`):
 
 The project uses Husky and lint-staged:
 
+- Requires dependencies to already be installed with `bun install`
 - Runs Prettier on staged files
+- Checks repository formatting without rewriting files
+- Lints GitHub Actions workflows with `bun run lint:actions`
 - Runs ESLint with auto-fix
 - Configured in `package.json` under `lint-staged`
 

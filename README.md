@@ -82,6 +82,7 @@ Website files are generated in the `public` folder.
 - `bun run build` - Build Chrome extension and website
 - `bun run dev` - Development mode with file watching
 - `bun run lint` - Run ESLint
+- `bun run lint:actions` - Lint GitHub Actions workflows
 - `bun run typecheck` - Run TypeScript type checking
 - `bun run test` - Run tests
 - `bun run validate-translations` - Validate translation files consistency
@@ -92,9 +93,10 @@ Website files are generated in the `public` folder.
 
 This project uses automated code quality checks:
 
-- **Pre-commit hooks** (via Husky): Automatically runs formatting, linting, and tests before each commit
+- **Pre-commit hooks** (via Husky): Validate staged formatting plus repository formatting, workflow linting, linting, type checks, and tests before each commit
 - **Prettier**: Code formatting
 - **ESLint**: Code linting
+- **actionlint**: GitHub Actions workflow linting
 - **lint-staged**: Runs formatters on staged files only
 
 ### CI/CD Workflows
@@ -135,8 +137,8 @@ The project includes several GitHub Actions workflows:
 The project includes a marketing website built with React and Tailwind CSS:
 
 - **URL**: [https://vivswan.github.io/azure-speech-for-chrome/](https://vivswan.github.io/azure-speech-for-chrome/)
-- **Auto-deployed** via GitHub Actions on every push to main
-- **Build command**: `npm run build`
+- **Auto-deployed** via GitHub Actions from the `deploy` branch
+- **Build command**: `bun run build`
 
 ## Contributing
 
