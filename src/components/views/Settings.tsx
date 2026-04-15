@@ -5,16 +5,38 @@ import { Button } from "../buttons/Button";
 import { Dropdown } from "../inputs/Dropdown";
 import { Command, Key } from "react-feather";
 import { getLanguageDisplayName, useTranslation } from "../../localization/translation";
+import { validateSubscriptionKey, validateRegion } from "../../helpers/validation-helpers";
 
 export function Settings() {
 	const { ready: syncReady, sync, setSync } = useSync();
 	const { t, locale, setLocale, availableLocales } = useTranslation();
 	const [credentialsValidating, setCredentialsValidating] = useState(false);
 	const [credentialsError, setCredentialsError] = useState("");
+	const [subscriptionKeyError, setSubscriptionKeyError] = useState("");
+	const [regionError, setRegionError] = useState("");
 
 	if (!syncReady) return null;
 
 	async function handleCredentialsValidation() {
+		// Clear previous errors
+		setCredentialsError("");
+		setSubscriptionKeyError("");
+		setRegionError("");
+
+		// Validate subscription key
+		const keyValidation = validateSubscriptionKey(sync.subscriptionKey);
+		if (!keyValidation.valid) {
+			setSubscriptionKeyError(keyValidation.error || "");
+			return;
+		}
+
+		// Validate region
+		const regionValidation = validateRegion(sync.region);
+		if (!regionValidation.valid) {
+			setRegionError(regionValidation.error || "");
+			return;
+		}
+
 		setCredentialsValidating(true);
 
 		const voices = await chrome.runtime.sendMessage({ id: "fetchVoices" });
@@ -54,18 +76,27 @@ export function Settings() {
 				</div>
 				<div className="bg-white p-3 rounded shadow-sm border flex flex-col gap-2">
 					<Text
-						error={credentialsError}
+						error={credentialsError || subscriptionKeyError}
 						label={t("settings.subscription_key_label")}
 						placeholder={t("settings.subscription_key_placeholder")}
 						value={sync.subscriptionKey}
-						onChange={(subscriptionKey) => setSync({ ...sync, subscriptionKey, credentialsValid: false })}
+						onChange={(subscriptionKey) => {
+							setSubscriptionKeyError("");
+							setCredentialsError("");
+							setSync({ ...sync, subscriptionKey, credentialsValid: false });
+						}}
 						type="password"
 					/>
 					<Text
+						error={regionError}
 						label={t("settings.region_label")}
 						placeholder={t("settings.region_placeholder")}
 						value={sync.region}
-						onChange={(region) => setSync({ ...sync, region, credentialsValid: false })}
+						onChange={(region) => {
+							setRegionError("");
+							setCredentialsError("");
+							setSync({ ...sync, region, credentialsValid: false });
+						}}
 					/>
 					{!sync.credentialsValid && (
 						<div className="w-fit ml-auto">

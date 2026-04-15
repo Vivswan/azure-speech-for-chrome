@@ -5,6 +5,7 @@ import { Textarea } from "../inputs/Textarea";
 import { useSync } from "../../hooks/useSync";
 import { Download, Play } from "react-feather";
 import { useTranslation } from "../../localization/translation";
+import { validateTextForSynthesis } from "../../helpers/validation-helpers";
 
 export function Sandbox() {
 	const { ready, sync } = useSync();
@@ -16,13 +17,17 @@ export function Sandbox() {
 	if (!ready) return null;
 
 	function handleValidation() {
+		setValueError("");
+
 		if (!sync.credentialsValid) {
 			setValueError(t("sandbox.errors.credentials_invalid"));
 			return false;
 		}
 
-		if (!text) {
-			setValueError(t("sandbox.errors.text_empty"));
+		// Validate text using validation helper
+		const textValidation = validateTextForSynthesis(text);
+		if (!textValidation.valid) {
+			setValueError(textValidation.error || t("sandbox.errors.text_empty"));
 			return false;
 		}
 

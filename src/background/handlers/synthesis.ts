@@ -4,24 +4,102 @@ import { fileExtMap } from "../../helpers/file-helpers";
 import { SyncStorage, SynthesizeParams } from "../../types";
 import { AUDIO_CHUNK_SIZE } from "../state";
 import { sendMessageToCurrentTab } from "../utils/messaging";
+import {
+	validateSubscriptionKey,
+	validateRegion,
+	validateTextForSynthesis,
+	validateSpeed,
+	validatePitch,
+	validateVolume,
+} from "../../helpers/validation-helpers";
 
 export async function synthesize(params: SynthesizeParams): Promise<string> {
 	console.log("Synthesizing text...", ...arguments);
 
 	const { text, encoding, voice, subscriptionKey, region, speed, pitch, volumeGainDb } = params;
 
-	if (!subscriptionKey || !region) {
+	// Validate subscription key
+	const keyValidation = validateSubscriptionKey(subscriptionKey);
+	if (!keyValidation.valid) {
 		sendMessageToCurrentTab({
 			id: "setError",
 			payload: {
 				icon: "error",
-				title: "Azure credentials are missing",
-				message:
-					"Please enter valid Azure Subscription Key and Region in the extension popup. Instructions: https://docs.microsoft.com/azure/cognitive-services/speech-service/",
+				title: "Invalid Azure Subscription Key",
+				message: keyValidation.error || "Please provide a valid subscription key",
 			},
 		});
+		throw new Error(keyValidation.error || "Invalid subscription key");
+	}
 
-		throw new Error("Azure credentials are missing");
+	// Validate region
+	const regionValidation = validateRegion(region);
+	if (!regionValidation.valid) {
+		sendMessageToCurrentTab({
+			id: "setError",
+			payload: {
+				icon: "error",
+				title: "Invalid Azure Region",
+				message: regionValidation.error || "Please provide a valid region",
+			},
+		});
+		throw new Error(regionValidation.error || "Invalid region");
+	}
+
+	// Validate text
+	const textValidation = validateTextForSynthesis(text);
+	if (!textValidation.valid) {
+		sendMessageToCurrentTab({
+			id: "setError",
+			payload: {
+				icon: "error",
+				title: "Invalid Text",
+				message: textValidation.error || "Please provide valid text",
+			},
+		});
+		throw new Error(textValidation.error || "Invalid text");
+	}
+
+	// Validate speed
+	const speedValidation = validateSpeed(speed);
+	if (!speedValidation.valid) {
+		sendMessageToCurrentTab({
+			id: "setError",
+			payload: {
+				icon: "error",
+				title: "Invalid Speed",
+				message: speedValidation.error || "Please provide a valid speed value",
+			},
+		});
+		throw new Error(speedValidation.error || "Invalid speed");
+	}
+
+	// Validate pitch
+	const pitchValidation = validatePitch(pitch);
+	if (!pitchValidation.valid) {
+		sendMessageToCurrentTab({
+			id: "setError",
+			payload: {
+				icon: "error",
+				title: "Invalid Pitch",
+				message: pitchValidation.error || "Please provide a valid pitch value",
+			},
+		});
+		throw new Error(pitchValidation.error || "Invalid pitch");
+	}
+
+	// Validate volume
+	const volumeValidation = validateVolume(volumeGainDb);
+	if (!volumeValidation.valid) {
+		sendMessageToCurrentTab({
+			id: "setError",
+			payload: {
+				icon: "error",
+				title: "Invalid Volume",
+				message: volumeValidation.error || "Please provide a valid volume value",
+			},
+		});
+		throw new Error(volumeValidation.error || "Invalid volume");
 	}
 
 	// Create Azure Speech Config

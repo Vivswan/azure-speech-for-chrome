@@ -1,5 +1,7 @@
 // Storage utilities for managing settings and migrations
 import { SessionStorage, Voice } from "../../types";
+import { validateSpeed, validatePitch, validateVolume, validateRegion } from "../../helpers/validation-helpers";
+import { fileExtMap } from "../../helpers/file-helpers";
 
 export async function setDefaultSettings(): Promise<void> {
 	console.log("Setting default settings...", ...arguments);
@@ -9,19 +11,30 @@ export async function setDefaultSettings(): Promise<void> {
 	});
 
 	const sync = await chrome.storage.sync.get();
-	await chrome.storage.sync.set({
+
+	// Validate and sanitize settings before storing
+	const validatedSettings = {
 		language: sync.language || "en-US",
-		speed: sync.speed || 1,
-		pitch: sync.pitch || 0,
+		speed: typeof sync.speed === "number" && validateSpeed(sync.speed).valid ? sync.speed : 1,
+		pitch: typeof sync.pitch === "number" && validatePitch(sync.pitch).valid ? sync.pitch : 0,
 		voices: sync.voices || { "en-US": "en-US-JennyNeural" },
-		readAloudEncoding: sync.readAloudEncoding || "OGG_OPUS",
-		downloadEncoding: sync.downloadEncoding || "MP3_64_KBPS",
+		readAloudEncoding:
+			typeof sync.readAloudEncoding === "string" && Object.keys(fileExtMap).includes(sync.readAloudEncoding)
+				? sync.readAloudEncoding
+				: "OGG_OPUS",
+		downloadEncoding:
+			typeof sync.downloadEncoding === "string" && Object.keys(fileExtMap).includes(sync.downloadEncoding)
+				? sync.downloadEncoding
+				: "MP3_64_KBPS",
 		subscriptionKey: sync.subscriptionKey || "",
-		region: sync.region || "eastus",
+		region: typeof sync.region === "string" && validateRegion(sync.region).valid ? sync.region : "eastus",
 		audioProfile: sync.audioProfile || "default",
-		volumeGainDb: sync.volumeGainDb || 0,
+		volumeGainDb:
+			typeof sync.volumeGainDb === "number" && validateVolume(sync.volumeGainDb).valid ? sync.volumeGainDb : 0,
 		engine: sync.engine || "neural",
-	});
+	};
+
+	await chrome.storage.sync.set(validatedSettings);
 }
 
 export async function migrateSyncStorage(): Promise<void> {
@@ -51,7 +64,8 @@ export async function migrateSyncStorage(): Promise<void> {
 	}
 
 	if (sync.speed) {
-		newSync.speed = Number(sync.speed);
+		const speed = Number(sync.speed);
+		newSync.speed = validateSpeed(speed).valid ? speed : 1;
 	}
 
 	if (sync.pitch) {
