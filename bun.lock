@@ -9,7 +9,7 @@
         "@types/sanitize-html": "^2.16.1",
         "dotenv": "^17.4.2",
         "esbuild": "^0.27.2",
-        "fuse.js": "^7.1.0",
+        "fuse.js": "^7.3.0",
         "he": "^1.2.0",
         "microsoft-cognitiveservices-speech-sdk": "^1.47.0",
         "react": "^19.2.4",
@@ -832,7 +832,7 @@
 
     "function-bind": ["function-bind@1.1.2", "", {}, "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA=="],
 
-    "fuse.js": ["fuse.js@7.1.0", "", {}, "sha512-trLf4SzuuUxfusZADLINj+dE8clK1frKdmqiJNb1Es75fmI5oY6X2mxLVUciLLjxqw/xr72Dhy+lER6dGd02FQ=="],
+    "fuse.js": ["fuse.js@7.3.0", "", {}, "sha512-plz8RVjfcDedTGfVngWH1jmJvBvAwi1v2jecfDerbEnMcmOYUEEwKFTHbNoCiYyzaK2Ws8lABkTCcRSqCY1q4w=="],
 
     "gensync": ["gensync@1.0.0-beta.2", "", {}, "sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg=="],
 
