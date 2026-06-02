@@ -24,7 +24,7 @@ jobs:
       EXTENSION_PRIVATE_KEY: ${{ secrets.EXTENSION_PRIVATE_KEY }}
     steps:
       - name: Checkout deploy branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.0.2
         with:
           ref: deploy
 
