@@ -18,7 +18,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.0.2
 
       - name: Lint GitHub Actions
         uses: devops-actions/actionlint@v0.1.12
